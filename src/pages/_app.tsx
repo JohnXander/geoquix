@@ -1,5 +1,6 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import '../../styles/globals.css'
+import type { AppType } from 'next/app';
+import { trpc } from '../utils/trpc';
 import { Poppins } from '@next/font/google'
 
 const poppins = Poppins({
@@ -7,10 +8,12 @@ const poppins = Poppins({
   subsets: ['latin'],
 })
 
-export default function App({ Component, pageProps }: AppProps) {
+const MyApp: AppType = ({ Component, pageProps }) => {
   return (
     <main className={poppins.className}>
       <Component {...pageProps} />
     </main>
   )
-}
+};
+
+export default trpc.withTRPC(MyApp);
