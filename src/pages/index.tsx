@@ -3,6 +3,8 @@ import { Categories } from '../components/categories/Categories'
 import { Header } from '../components/header/Header'
 
 export default function Home() {
+  
+
   return (
     <div>
       <Head>
