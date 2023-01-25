@@ -1,5 +1,6 @@
 import Head from "next/head"
 import { useEffect, useState } from "react"
+import generateFalseAnswers from "../utils/functions/generateFalseAnswers"
 import generateQuizData from "../utils/functions/generateQuizData"
 import getAllAnswers from "../utils/functions/getAllAnswers"
 
@@ -26,11 +27,19 @@ const Flags = () => {
             
             <main>
                 {quizData.map((c: any, idx: number) => {
+                    const answers = generateFalseAnswers(c.flags.png, randomFlags)
 
                     return (
                         <div key={idx}>
                             <h1 className="text-3xl">{c.name.common}</h1>
+                            <div className="flex gap-2">
+                                {answers.map((a: string, idx) => {
+                                    return <h2 className="border-2 py-2 px-4" key={idx}>{a}</h2>
+                                })}
+                            </div>
                         </div>
+
+                        
                     )
                 })}
             </main>

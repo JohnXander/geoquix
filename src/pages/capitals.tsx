@@ -1,5 +1,6 @@
 import Head from "next/head"
 import { useEffect, useState } from "react"
+import generateFalseAnswers from "../utils/functions/generateFalseAnswers"
 import generateQuizData from "../utils/functions/generateQuizData"
 import getAllAnswers from "../utils/functions/getAllAnswers"
 
@@ -13,36 +14,23 @@ const Capitals = () => {
             .then(data => {
                 generateQuizData(data, setQuizData)
                 getAllAnswers(data, "capital", "", setRandomCapitals)
-                // generateRandomCapitals(data)
             })
     }, [])
 
-    // const generateRandomCapitals = (data: any) => {
-    //     const capitals: Array<string> = []
+    // const generateFalseAnswers = (correctAnswer: string) => {
+    //     const randomIdx1 = Math.floor(Math.random() * randomCapitals.length)
+    //     const randomIdx2 = Math.floor(Math.random() * randomCapitals.length)
+    //     const randomIdx3 = Math.floor(Math.random() * randomCapitals.length)
 
-    //     for (let i = 0; i < data.length; i++){
-    //         if (data[i].capital !== undefined) {
-    //             capitals.push(String(data[i].capital))
-    //         }
-    //     }
+    //     const allAnswers = [
+    //         String(correctAnswer),
+    //         randomCapitals[randomIdx1],
+    //         randomCapitals[randomIdx2],
+    //         randomCapitals[randomIdx3]
+    //     ].sort()
 
-    //     setRandomCapitals(capitals)
+    //     return allAnswers
     // }
-
-    const generateFalseAnswers = (correctAnswer: string) => {
-        const randomIdx1 = Math.floor(Math.random() * randomCapitals.length)
-        const randomIdx2 = Math.floor(Math.random() * randomCapitals.length)
-        const randomIdx3 = Math.floor(Math.random() * randomCapitals.length)
-
-        const allAnswers = [
-            String(correctAnswer),
-            randomCapitals[randomIdx1],
-            randomCapitals[randomIdx2],
-            randomCapitals[randomIdx3]
-        ].sort()
-
-        return allAnswers
-    }
 
     return (
         <div>
@@ -54,7 +42,7 @@ const Capitals = () => {
             
             <main>
                 {quizData.map((c: any, idx: number) => {
-                    const answers = generateFalseAnswers(c.capital)
+                    const answers = generateFalseAnswers(c.capital, randomCapitals)
 
                     return (
                         <div key={idx}>

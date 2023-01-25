@@ -1,4 +1,6 @@
-const getAllAnswers = (data: any, type1: any, type2: any, setAllAnswers: any) => {
+import { Dispatch, SetStateAction } from "react"
+
+const getAllAnswers = (data: any, type1: string, type2: string, setAllAnswers: Dispatch<SetStateAction<string[]>>) => {
     const answers: Array<string> = []
 
     for (let i = 0; i < data.length; i++){
