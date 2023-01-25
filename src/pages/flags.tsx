@@ -6,14 +6,14 @@ import getAllAnswers from "../utils/functions/getAllAnswers"
 
 const Flags = () => {
     const [quizData, setQuizData] = useState<any[]>([])
-    const [randomFlags, setRandomFlags] = useState<string[]>([])
+    const [flags, setFlags] = useState<string[]>([])
 
     useEffect(() => {
         fetch("https://restcountries.com/v3.1/all")
             .then(res => res.json())
             .then(data => {
                 generateQuizData(data, setQuizData)
-                getAllAnswers(data, "flags", "png", setRandomFlags)
+                getAllAnswers(data, "flags", "png", setFlags)
             })
     }, [])
 
@@ -27,7 +27,7 @@ const Flags = () => {
             
             <main>
                 {quizData.map((c: any, idx: number) => {
-                    const answers = generateFalseAnswers(c.flags.png, randomFlags)
+                    const answers = generateFalseAnswers(c.flags.png, flags)
 
                     return (
                         <div key={idx}>
@@ -38,8 +38,6 @@ const Flags = () => {
                                 })}
                             </div>
                         </div>
-
-                        
                     )
                 })}
             </main>

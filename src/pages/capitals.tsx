@@ -6,31 +6,16 @@ import getAllAnswers from "../utils/functions/getAllAnswers"
 
 const Capitals = () => {
     const [quizData, setQuizData] = useState<any[]>([])
-    const [randomCapitals, setRandomCapitals] = useState<string[]>([])
+    const [capitals, setCapitals] = useState<string[]>([])
 
     useEffect(() => {
         fetch("https://restcountries.com/v3.1/all")
             .then(res => res.json())
             .then(data => {
                 generateQuizData(data, setQuizData)
-                getAllAnswers(data, "capital", "", setRandomCapitals)
+                getAllAnswers(data, "capital", "", setCapitals)
             })
     }, [])
-
-    // const generateFalseAnswers = (correctAnswer: string) => {
-    //     const randomIdx1 = Math.floor(Math.random() * randomCapitals.length)
-    //     const randomIdx2 = Math.floor(Math.random() * randomCapitals.length)
-    //     const randomIdx3 = Math.floor(Math.random() * randomCapitals.length)
-
-    //     const allAnswers = [
-    //         String(correctAnswer),
-    //         randomCapitals[randomIdx1],
-    //         randomCapitals[randomIdx2],
-    //         randomCapitals[randomIdx3]
-    //     ].sort()
-
-    //     return allAnswers
-    // }
 
     return (
         <div>
@@ -42,7 +27,7 @@ const Capitals = () => {
             
             <main>
                 {quizData.map((c: any, idx: number) => {
-                    const answers = generateFalseAnswers(c.capital, randomCapitals)
+                    const answers = generateFalseAnswers(c.capital, capitals)
 
                     return (
                         <div key={idx}>
