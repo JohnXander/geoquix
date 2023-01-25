@@ -12,7 +12,7 @@ export const Categories = () => {
 
     return (
         <div className="flex flex-col items-center gap-2 py-6 md:px-12 lg:px-32 border-b-2 border-gray-200">
-            <Link className={category} href="/cities">
+            <Link className={category} href="/capitals">
                 <h2 className="text-2xl">Capital Cities</h2>
                 <Image
                     src={City}
