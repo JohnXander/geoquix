@@ -1,6 +1,7 @@
 import Head from "next/head"
 import { useEffect, useState } from "react"
 import generateQuizData from "../utils/functions/generateQuizData"
+import getAllAnswers from "../utils/functions/getAllAnswers"
 
 const Capitals = () => {
     const [quizData, setQuizData] = useState<any[]>([])
@@ -11,21 +12,22 @@ const Capitals = () => {
             .then(res => res.json())
             .then(data => {
                 generateQuizData(data, setQuizData)
-                generateRandomCapitals(data)
+                getAllAnswers(data, "capital", "", setRandomCapitals)
+                // generateRandomCapitals(data)
             })
     }, [])
 
-    const generateRandomCapitals = (data: any) => {
-        const capitals: Array<string> = []
+    // const generateRandomCapitals = (data: any) => {
+    //     const capitals: Array<string> = []
 
-        for (let i = 0; i < data.length; i++){
-            if (data[i].capital !== undefined) {
-                capitals.push(String(data[i].capital))
-            }
-        }
+    //     for (let i = 0; i < data.length; i++){
+    //         if (data[i].capital !== undefined) {
+    //             capitals.push(String(data[i].capital))
+    //         }
+    //     }
 
-        setRandomCapitals(capitals)
-    }
+    //     setRandomCapitals(capitals)
+    // }
 
     const generateFalseAnswers = (correctAnswer: string) => {
         const randomIdx1 = Math.floor(Math.random() * randomCapitals.length)

@@ -1,4 +1,6 @@
-const generateQuizData = (data: any, setQuizData: any) => {
+import { Dispatch, SetStateAction } from "react"
+
+const generateQuizData = (data: any, setQuizData: Dispatch<SetStateAction<any[]>>) => {
     const countries: Array<any> = []
     
     for (let i = 0; i < 10; i++){
