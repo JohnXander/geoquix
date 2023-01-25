@@ -1,34 +1,19 @@
 import Head from "next/head"
 import { useEffect, useState } from "react"
+import generateQuizData from "../utils/functions/generateQuizData"
 
 const Capitals = () => {
-    const [quizData, setQuizData] = useState<number[]>([])
+    const [quizData, setQuizData] = useState<any[]>([])
     const [randomCapitals, setRandomCapitals] = useState<string[]>([])
 
     useEffect(() => {
         fetch("https://restcountries.com/v3.1/all")
             .then(res => res.json())
             .then(data => {
-                generateQuizData(data)
+                generateQuizData(data, setQuizData)
                 generateRandomCapitals(data)
             })
     }, [])
-
-    const generateQuizData = (data: any) => {
-        const countries: Array<number> = []
-        
-        for (let i = 0; i < 10; i++){
-            const randomNumber = Math.floor(Math.random() * 250)
-
-            if (!countries.includes(randomNumber)) {
-                if (data[randomNumber].capital !== undefined) {
-                    countries.push(data[randomNumber])
-                }
-            }
-        }
-
-        setQuizData(countries)
-    }
 
     const generateRandomCapitals = (data: any) => {
         const capitals: Array<string> = []
