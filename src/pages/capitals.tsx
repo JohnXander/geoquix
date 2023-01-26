@@ -10,12 +10,13 @@ const Capitals = () => {
     const [quizData, setQuizData] = useState<any[]>([])
     const [capitals, setCapitals] = useState<string[]>([])
     const [score, setScore] = useState<number>(0)
+    const [total, setTotal] = useState<number>(0)
 
     useEffect(() => {
         fetch("https://restcountries.com/v3.1/all")
             .then(res => res.json())
             .then(data => {
-                generateQuizData(data, setQuizData)
+                generateQuizData(data, setQuizData, setTotal)
                 getAllAnswers(data, "capital", "", setCapitals)
             })
     }, [])
@@ -33,24 +34,25 @@ const Capitals = () => {
             <Header />
             
             <main className="flex flex-col items-center py-4 gap-4">
-                <p>{score} pts</p>
+                <p>{score} / {total}</p>
 
-                {quizData.length > 0 && <div className="flex flex-col items-center justify-center border-y-2 w-full py-6 px-8">
-                    <h1 className="text-3xl">{quizData[0]?.name.common}</h1>
-                    <div className="m-2"></div>
-                    <div className="flex flex-col md:flex-row gap-2">
-                        {answers.map((a: string, answerIdx: number) => {
-                            return (
-                                <h2
-                                    key={answerIdx}
-                                    onClick={() => submitAnswer(a, quizData[0]?.capital, setScore, score, setQuizData, quizData)}
-                                    className="border-2 py-2 px-4 text-center">
-                                    {a}
-                                </h2>
-                            )
-                        })}
-                    </div>
-                </div>}
+                {quizData.length > 0 &&
+                    <div className="flex flex-col items-center justify-center border-y-2 w-full py-6 px-8">
+                        <h1 className="text-3xl">{quizData[0]?.name.common}</h1>
+                        <div className="m-2"></div>
+                        <div className="flex flex-col md:flex-row gap-2">
+                            {answers.map((a: string, answerIdx: number) => {
+                                return (
+                                    <h2
+                                        key={answerIdx}
+                                        onClick={() => submitAnswer(a, quizData[0]?.capital, setScore, score, setQuizData, quizData)}
+                                        className="border-2 py-2 px-4 text-center cursor-pointer hover:bg-gray-200">
+                                        {a}
+                                    </h2>
+                                )
+                            })}
+                        </div>
+                    </div>}
                
             </main>
         </div>

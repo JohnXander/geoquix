@@ -1,6 +1,10 @@
 import { Dispatch, SetStateAction } from "react"
 
-const generateQuizData = (data: any, setQuizData: Dispatch<SetStateAction<any[]>>) => {
+const generateQuizData = (
+    data: any,
+    setQuizData: Dispatch<SetStateAction<any[]>>,
+    setTotal: Dispatch<SetStateAction<number>>
+) => {
     const countries: Array<any> = []
     
     for (let i = 0; i < 10; i++){
@@ -14,6 +18,7 @@ const generateQuizData = (data: any, setQuizData: Dispatch<SetStateAction<any[]>
     }
 
     setQuizData(countries)
+    setTotal(countries.length)
 }
 
 export default generateQuizData
