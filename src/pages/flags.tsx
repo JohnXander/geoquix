@@ -1,4 +1,5 @@
 import Head from "next/head"
+import Image from "next/image"
 import { useEffect, useState } from "react"
 import generateFalseAnswers from "../utils/functions/generateFalseAnswers"
 import generateQuizData from "../utils/functions/generateQuizData"
@@ -34,7 +35,15 @@ const Flags = () => {
                             <h1 className="text-3xl">{c.name.common}</h1>
                             <div className="flex gap-2">
                                 {answers.map((a: string, idx) => {
-                                    return <h2 className="border-2 py-2 px-4" key={idx}>{a}</h2>
+                                    return (
+                                        <Image
+                                            key={idx}
+                                            src={a}
+                                            alt={`Flag of ${c.name.common}`}
+                                            width={100}
+                                            height={100}
+                                        />
+                                    )
                                 })}
                             </div>
                         </div>
