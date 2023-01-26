@@ -38,9 +38,10 @@ const Flags = () => {
                                     return (
                                         <Image
                                             key={idx}
+                                            className="object-contain border-2 p-2 cursor-pointer hover:bg-gray-200"
                                             src={a}
                                             alt={`Flag of ${c.name.common}`}
-                                            width={100}
+                                            width={150}
                                             height={100}
                                         />
                                     )

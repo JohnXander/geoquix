@@ -3,7 +3,6 @@ import { Dispatch, SetStateAction } from "react"
 const generateQuizData = (
     data: any,
     setQuizData: Dispatch<SetStateAction<any[]>>,
-    setTotal: Dispatch<SetStateAction<number>>
 ) => {
     const countries: Array<any> = []
     
@@ -18,7 +17,6 @@ const generateQuizData = (
     }
 
     setQuizData(countries)
-    setTotal(countries.length)
 }
 
 export default generateQuizData

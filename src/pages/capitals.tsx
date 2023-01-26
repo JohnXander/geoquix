@@ -10,13 +10,12 @@ const Capitals = () => {
     const [quizData, setQuizData] = useState<any[]>([])
     const [capitals, setCapitals] = useState<string[]>([])
     const [score, setScore] = useState<number>(0)
-    const [total, setTotal] = useState<number>(0)
 
     useEffect(() => {
         fetch("https://restcountries.com/v3.1/all")
             .then(res => res.json())
             .then(data => {
-                generateQuizData(data, setQuizData, setTotal)
+                generateQuizData(data, setQuizData)
                 getAllAnswers(data, "capital", "", setCapitals)
             })
     }, [])
@@ -34,7 +33,7 @@ const Capitals = () => {
             <Header />
             
             <main className="flex flex-col items-center py-4 gap-4">
-                <p>{score} / {total}</p>
+                <p>{score} pts</p>
 
                 {quizData.length > 0 &&
                     <div className="flex flex-col items-center justify-center border-y-2 w-full py-6 px-8">
