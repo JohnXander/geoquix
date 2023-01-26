@@ -32,20 +32,20 @@ const Capitals = () => {
             
             <main className="flex flex-col items-center py-4 gap-4">
                 <p>{score} / 10</p>
-                {quizData.map((c: any, idx: number) => {
+                {quizData.map((c: any, questionIdx: number) => {
                     const answers = generateFalseAnswers(c.capital, capitals)
 
                     return (
-                        <div key={idx} className="flex flex-col items-center justify-center border-y-2 w-full py-6 px-8">
+                        <div key={questionIdx} className="flex flex-col items-center justify-center border-y-2 w-full py-6 px-8">
                             <h1 className="text-3xl">{c.name.common}</h1>
                             <div className="m-2"></div>
                             <div className="flex flex-col md:flex-row gap-2">
-                                {answers.map((a: string, idx: number) => {
+                                {answers.map((a: string, answerIdx: number) => {
                                     return (
                                         <h2
-                                            onClick={() => submitAnswer(a, c.capital, setScore, score)}
-                                            className="border-2 py-2 px-4 text-center"
-                                            key={idx}>
+                                            key={answerIdx}
+                                            onClick={() => submitAnswer(a, c.capital, setScore, score, setQuizData, quizData)}
+                                            className="border-2 py-2 px-4 text-center">
                                             {a}
                                         </h2>
                                     )

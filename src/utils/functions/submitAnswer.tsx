@@ -4,8 +4,12 @@ const submitAnswer = (
     submittedAnswer: string,
     correctAnswer: string[],
     setScore: Dispatch<SetStateAction<number>>,
-    score: number
+    score: number,
+    setQuizData: Dispatch<SetStateAction<any[]>>,
+    quizData: any[]
 ) => {
+
+    setQuizData(quizData.filter(q => q.capital !== correctAnswer))
     
     if (submittedAnswer === String(correctAnswer)) {
         setScore(score + 1)
