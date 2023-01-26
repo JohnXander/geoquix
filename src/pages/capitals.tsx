@@ -20,6 +20,8 @@ const Capitals = () => {
             })
     }, [])
 
+    const answers = generateFalseAnswers(quizData[0]?.capital, capitals)
+
     return (
         <div>
             <Head>
@@ -31,29 +33,25 @@ const Capitals = () => {
             <Header />
             
             <main className="flex flex-col items-center py-4 gap-4">
-                <p>{score} / 10</p>
-                {quizData.map((c: any, questionIdx: number) => {
-                    const answers = generateFalseAnswers(c.capital, capitals)
+                <p>{score} pts</p>
 
-                    return (
-                        <div key={questionIdx} className="flex flex-col items-center justify-center border-y-2 w-full py-6 px-8">
-                            <h1 className="text-3xl">{c.name.common}</h1>
-                            <div className="m-2"></div>
-                            <div className="flex flex-col md:flex-row gap-2">
-                                {answers.map((a: string, answerIdx: number) => {
-                                    return (
-                                        <h2
-                                            key={answerIdx}
-                                            onClick={() => submitAnswer(a, c.capital, setScore, score, setQuizData, quizData)}
-                                            className="border-2 py-2 px-4 text-center">
-                                            {a}
-                                        </h2>
-                                    )
-                                })}
-                            </div>
-                        </div>
-                    )
-                })}
+                {quizData.length > 0 && <div className="flex flex-col items-center justify-center border-y-2 w-full py-6 px-8">
+                    <h1 className="text-3xl">{quizData[0]?.name.common}</h1>
+                    <div className="m-2"></div>
+                    <div className="flex flex-col md:flex-row gap-2">
+                        {answers.map((a: string, answerIdx: number) => {
+                            return (
+                                <h2
+                                    key={answerIdx}
+                                    onClick={() => submitAnswer(a, quizData[0]?.capital, setScore, score, setQuizData, quizData)}
+                                    className="border-2 py-2 px-4 text-center">
+                                    {a}
+                                </h2>
+                            )
+                        })}
+                    </div>
+                </div>}
+               
             </main>
         </div>
     )
