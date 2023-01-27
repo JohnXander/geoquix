@@ -47,7 +47,7 @@ const Currencies = () => {
                         <div className="m-2"></div>
                         <div className="flex flex-col md:flex-row gap-2">
                             {answers.map((a: string, answerIdx: number) => {
-                                a = formatNumbers(a)
+                                const displayAnswer = formatNumbers(a)
 
                                 return (
                                     <h2
@@ -65,13 +65,12 @@ const Currencies = () => {
                                             )
                                         }}
                                         className="border-2 py-2 px-4 text-center cursor-pointer hover:bg-gray-200">
-                                        {a} &#x33A2;
+                                        {displayAnswer} &#x33A2;
                                     </h2>
                                 )
                             })}
                         </div>
                     </div>}
-               
             </main>
         </div>
     )
