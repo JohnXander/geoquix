@@ -34,6 +34,7 @@ const Capitals = () => {
             
             <main className="flex flex-col items-center py-4 gap-4">
                 <p>{score} pts</p>
+                <p>{quizData.length} questions left</p>
 
                 {quizData.length > 0 &&
                     <div className="flex flex-col items-center justify-center border-y-2 w-full py-6 px-8">
