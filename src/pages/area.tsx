@@ -53,7 +53,16 @@ const Currencies = () => {
                                     <h2
                                         key={answerIdx}
                                         onClick={() => {
-                                            submitAnswer(a, "area", quizData[0]?.area, setScore, score, setQuizData, quizData)
+                                            submitAnswer(
+                                                a,
+                                                "area",
+                                                "",
+                                                quizData[0]?.area,
+                                                setScore,
+                                                score,
+                                                setQuizData,
+                                                quizData
+                                            )
                                         }}
                                         className="border-2 py-2 px-4 text-center cursor-pointer hover:bg-gray-200">
                                         {a} &#x33A2;

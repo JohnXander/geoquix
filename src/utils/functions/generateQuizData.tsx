@@ -11,15 +11,17 @@ const generateQuizData = (
     for (let i = 0; i < 10; i++){
         const randomNumber = Math.floor(Math.random() * data.length)
 
+        const item = data[randomNumber]
+
         if (type2 !== "") { 
-            if (data[randomNumber]?.[type1]?.[type2] !== undefined) {
-                countries.push(data[randomNumber])
+            if (item?.[type1]?.[type2]) {
+                countries.push(item)
             } else {
                 countries.push(data[100])
             }
         } else {
-            if (data[randomNumber]?.[type1] !== undefined) {
-                countries.push(data[randomNumber])
+            if (item?.[type1]) {
+                countries.push(item)
             } else {
                 countries.push(data[100])
             }

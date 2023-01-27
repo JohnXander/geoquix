@@ -2,7 +2,8 @@ import { Dispatch, SetStateAction } from "react"
 
 const submitAnswer = (
     submittedAnswer: string,
-    type: string,
+    type1: string,
+    type2: string,
     correctAnswer: string[],
     setScore: Dispatch<SetStateAction<number>>,
     score: number,
@@ -10,7 +11,11 @@ const submitAnswer = (
     quizData: any[]
 ) => {
 
-    setQuizData(quizData.filter(q => q?.[type] !== correctAnswer))
+    if (type2) {
+        setQuizData(quizData.filter(q => q?.[type1]?.[type2] !== correctAnswer))
+    } else {
+        setQuizData(quizData.filter(q => q?.[type1] !== correctAnswer))
+    }
     
     if (submittedAnswer === String(correctAnswer)) {
         setScore(score + 1)
