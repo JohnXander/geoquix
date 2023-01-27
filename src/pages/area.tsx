@@ -1,6 +1,7 @@
 import Head from "next/head"
 import { useEffect, useState } from "react"
 import { Header } from "../components/header/Header"
+import formatNumbers from "../utils/functions/formatNumbers"
 import generateFalseAnswers from "../utils/functions/generateFalseAnswers"
 import generateQuizData from "../utils/functions/generateQuizData"
 import getAllAnswers from "../utils/functions/getAllAnswers"
@@ -43,11 +44,9 @@ const Currencies = () => {
                         <div className="m-2"></div>
                         <div className="flex flex-col md:flex-row gap-2">
                             {answers.map((a: string, answerIdx: number) => {
-                                if (a.length === 4) {
-                                    a = a[0] + "," + a.substring(1)
-                                } else if (a.length === 5) {
-                                    a = a[0] + a[1] + "," + a.substring(2)
-                                }
+
+                                a = formatNumbers(a)
+
                                 return (
                                     <h2
                                         key={answerIdx}
