@@ -16,7 +16,7 @@ const Currencies = () => {
         fetch("https://restcountries.com/v3.1/all")
             .then(res => res.json())
             .then(data => {
-                generateQuizData(data, setQuizData)
+                generateQuizData(data, "area", setQuizData)
                 getAllAnswers(data, "area", "", setAreas)
             })
     }, [])
@@ -35,6 +35,7 @@ const Currencies = () => {
             <Header />
             
             <main className="flex flex-col items-center py-4 gap-4">
+                <h2>Land area in square kilometres?</h2>
                 <p>{score} / 10</p>
                 <p>{quizLen} questions left</p>
 
@@ -44,13 +45,14 @@ const Currencies = () => {
                         <div className="m-2"></div>
                         <div className="flex flex-col md:flex-row gap-2">
                             {answers.map((a: string, answerIdx: number) => {
-
                                 a = formatNumbers(a)
 
                                 return (
                                     <h2
                                         key={answerIdx}
-                                        onClick={() => submitAnswer(a, "area", quizData[0]?.area, setScore, score, setQuizData, quizData)}
+                                        onClick={() => {
+                                            submitAnswer(a, "area", quizData[0]?.area, setScore, score, setQuizData, quizData)
+                                        }}
                                         className="border-2 py-2 px-4 text-center cursor-pointer hover:bg-gray-200">
                                         {a}
                                     </h2>

@@ -15,7 +15,7 @@ const Capitals = () => {
         fetch("https://restcountries.com/v3.1/all")
             .then(res => res.json())
             .then(data => {
-                generateQuizData(data, setQuizData)
+                generateQuizData(data, "capital", setQuizData)
                 getAllAnswers(data, "capital", "", setCapitals)
             })
     }, [])
@@ -34,6 +34,7 @@ const Capitals = () => {
             <Header />
             
             <main className="flex flex-col items-center py-4 gap-4">
+                <h2>Capital city?</h2>
                 <p>{score} / 10</p>
                 <p>{quizLen} questions left</p>
 
@@ -46,7 +47,9 @@ const Capitals = () => {
                                 return (
                                     <h2
                                         key={answerIdx}
-                                        onClick={() => submitAnswer(a, "capital", quizData[0]?.capital, setScore, score, setQuizData, quizData)}
+                                        onClick={() => {
+                                            submitAnswer(a, "capital", quizData[0]?.capital, setScore, score, setQuizData, quizData)
+                                        }}
                                         className="border-2 py-2 px-4 text-center cursor-pointer hover:bg-gray-200">
                                         {a}
                                     </h2>
