@@ -50,7 +50,7 @@ const Flags = () => {
                                 return (
                                     <Image
                                         key={answerIdx}
-                                        className="object-contain border-2 p-2 cursor-pointer hover:bg-gray-200"
+                                        className="object-contain border-2 p-2 cursor-pointer bg-gray-100 hover:bg-gray-200"
                                         src={a}
                                         onClick={() => {
                                             submitAnswer(
@@ -65,8 +65,8 @@ const Flags = () => {
                                             )
                                         }}
                                         alt="Country Flag"
-                                        width={150}
-                                        height={100}
+                                        width={100}
+                                        height={50}
                                     />
                                 )
                             })}

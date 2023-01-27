@@ -16,6 +16,8 @@ const formatNumbers = (num: string) => {
         case 8: 
             num = `${num.substring(0, 2)},${num.substring(2, 5)},${num.substring(5)}`
             break
+        case 9: 
+            num = `${num.substring(0, 3)},${num.substring(3, 6)},${num.substring(6)}`
     }
 
     return num
