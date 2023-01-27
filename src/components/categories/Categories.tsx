@@ -1,7 +1,7 @@
 import Image from "next/image"
 import City from "../../../assets/category-icons/city.png"
 import Flag from "../../../assets/category-icons/flag.png"
-import Currency from "../../../assets/category-icons/currency.png"
+import Area from "../../../assets/category-icons/area.png"
 import Language from "../../../assets/category-icons/language.png"
 import Population from "../../../assets/category-icons/population.png"
 import Link from "next/link"
@@ -30,10 +30,10 @@ export const Categories = () => {
                     height={35}
                 />
             </Link>
-            <Link className={category} href="/currencies">
-                <h2 className="text-2xl">Currencies</h2>
+            <Link className={category} href="/area">
+                <h2 className="text-2xl">Area</h2>
                 <Image
-                    src={Currency}
+                    src={Area}
                     alt="Currency Icon"
                     width={35}
                     height={35}
