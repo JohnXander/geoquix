@@ -15,7 +15,7 @@ const Capitals = () => {
         fetch("https://restcountries.com/v3.1/all")
             .then(res => res.json())
             .then(data => {
-                generateQuizData(data, "capital", setQuizData)
+                generateQuizData(data, "capital", "", setQuizData)
                 getAllAnswers(data, "capital", "", setCapitals)
             })
     }, [])

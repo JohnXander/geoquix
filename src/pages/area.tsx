@@ -16,7 +16,7 @@ const Currencies = () => {
         fetch("https://restcountries.com/v3.1/all")
             .then(res => res.json())
             .then(data => {
-                generateQuizData(data, "area", setQuizData)
+                generateQuizData(data, "area", "", setQuizData)
                 getAllAnswers(data, "area", "", setAreas)
             })
     }, [])
