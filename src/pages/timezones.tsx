@@ -1,6 +1,7 @@
 import Head from "next/head"
 import { useEffect, useState } from "react"
 import { Header } from "../components/header/Header"
+import formatTimezone from "../utils/functions/formatTimezone"
 import generateFalseAnswers from "../utils/functions/generateFalseAnswers"
 import generateQuizData from "../utils/functions/generateQuizData"
 import getAllAnswers from "../utils/functions/getAllAnswers"
@@ -46,6 +47,8 @@ const Timezones = () => {
                         <div className="m-2"></div>
                         <div className="flex flex-col md:flex-row gap-2">
                             {answers.map((a: string, answerIdx: number) => {
+                                const displayAnswer = formatTimezone(a)
+
                                 return (
                                     <h2
                                         key={answerIdx}
@@ -62,7 +65,7 @@ const Timezones = () => {
                                             )
                                         }}
                                         className="border-2 py-2 px-4 text-center cursor-pointer hover:bg-gray-200">
-                                        {a}
+                                        {displayAnswer}
                                     </h2>
                                 )
                             })}
