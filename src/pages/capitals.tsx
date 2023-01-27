@@ -23,6 +23,8 @@ const Capitals = () => {
     const answers = generateFalseAnswers(quizData[0]?.capital, capitals)
     const quizLen = quizData.length
 
+    console.log(quizData)
+
     return (
         <div>
             <Head>

@@ -1,13 +1,11 @@
 const generateFalseAnswers = (correctAnswer: string, allAnswers: string[]) => {
-    const randomIdx1 = Math.floor(Math.random() * allAnswers.length)
-    const randomIdx2 = Math.floor(Math.random() * allAnswers.length)
-    const randomIdx3 = Math.floor(Math.random() * allAnswers.length)
+    const generateRandomNum = () => Math.floor(Math.random() * allAnswers.length)
 
     const answers = [
         String(correctAnswer),
-        allAnswers[randomIdx1],
-        allAnswers[randomIdx2],
-        allAnswers[randomIdx3]
+        allAnswers[generateRandomNum()],
+        allAnswers[generateRandomNum()],
+        allAnswers[generateRandomNum()]
     ].sort()
 
     return answers
