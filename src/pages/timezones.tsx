@@ -1,6 +1,7 @@
 import Head from "next/head"
 import { useEffect, useState } from "react"
 import { Header } from "../components/header/Header"
+import QuizHeader from "../components/header/QuizHeader"
 import formatTimezone from "../utils/functions/formatTimezone"
 import generateFalseAnswers from "../utils/functions/generateFalseAnswers"
 import generateQuizData from "../utils/functions/generateQuizData"
@@ -35,11 +36,11 @@ const Timezones = () => {
             <Header />
             
             <main className="flex flex-col items-center py-4 gap-4">
-                <div className="flex flex-col gap-4 md:flex-row items-center">
-                    <h2 className="text-2xl">What is the timezone?</h2>
-                    <p className="border-2 py-4 px-8">{score} / 10</p>
-                    <p>{quizLen} questions left</p>
-                </div>
+                <QuizHeader
+                    category="timezone"
+                    score={score}
+                    quizLen={quizLen}
+                />
 
                 {quizLen > 0 &&
                     <div className="flex flex-col items-center justify-center border-y-2 w-full py-6 px-8">
