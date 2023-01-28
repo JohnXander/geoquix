@@ -1,13 +1,13 @@
-const formatTimezone = (a: string) => {
+const formatTimezone = (time: string) => {
 
-    if (a === "UTC") {
-        a = "UTC+00:00"
-    } else if (a.includes(",")) {
-        const arrayOfTimes = a.split(",")
-        a = `${arrayOfTimes[0]} - ${arrayOfTimes[arrayOfTimes.length - 1]}`
+    if (time === "UTC") {
+        time = "UTC+00:00"
+    } else if (time.includes(",")) {
+        const arrayOfTimes = time.split(",")
+        time = `${arrayOfTimes[0]} - ${arrayOfTimes[arrayOfTimes.length - 1]}`
     }
 
-    return a
+    return time
     
 }
 
