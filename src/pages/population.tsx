@@ -3,11 +3,9 @@ import { useEffect, useState } from "react"
 import { Header } from "../components/header/Header"
 import QuizHeader from "../components/header/QuizHeader"
 import Quiz from "../components/quiz/Quiz"
-import formatNumbers from "../utils/functions/formatNumbers"
 import generateFalseAnswers from "../utils/functions/generateFalseAnswers"
 import generateQuizData from "../utils/functions/generateQuizData"
 import getAllAnswers from "../utils/functions/getAllAnswers"
-import submitAnswer from "../utils/functions/submitAnswer"
 
 const Population = () => {
     const [quizData, setQuizData] = useState<any[]>([])
