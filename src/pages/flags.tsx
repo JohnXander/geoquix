@@ -41,17 +41,17 @@ const Flags = () => {
             <main className="flex flex-col items-center py-4 gap-4">
                 {completed && <FinishedModal score={score} answered={answered} />}
 
-                {!completed &&
-                    <QuizHeader
-                        category="flag"
-                        score={score}
-                        answered={answered}
-                        setCompleted={setCompleted}
-                    />
-                }
+                <QuizHeader
+                    category="flag"
+                    score={score}
+                    answered={answered}
+                    setCompleted={setCompleted}
+                />
 
                 {quizLen > 0 &&
-                    <div className="flex flex-col items-center justify-center border-y-2 w-full py-6 px-8">
+                    <div
+                        style={completed ? {pointerEvents: "none"} : {pointerEvents: "auto"}}
+                        className="flex flex-col items-center justify-center border-y-2 w-full py-6 px-8">
                         <h1 className="text-3xl">{quizData[0]?.name.common}</h1>
                         <div className="m-2"></div>
                         <div className="flex flex-col md:flex-row gap-2">

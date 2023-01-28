@@ -25,6 +25,7 @@ const Capitals = () => {
     }, [])
 
     const answers = generateFalseAnswers(quizData[0]?.capital, capitals)
+    const quizLen = quizData.length
 
     return (
         <div>
@@ -39,29 +40,26 @@ const Capitals = () => {
             <main className="flex flex-col items-center py-4 gap-4">
                 {completed && <FinishedModal score={score} answered={answered} />}
 
-                {!completed &&
-                    <QuizHeader
-                        category="capital city"
-                        score={score}
-                        answered={answered}
-                        setCompleted={setCompleted}
-                    />
-                }
+                <QuizHeader
+                    category="capital city"
+                    score={score}
+                    answered={answered}
+                    setCompleted={setCompleted}
+                />
 
-                {!completed &&
-                    <Quiz
-                        name={quizData[0]?.name.common}
-                        type1="capital"
-                        answers={answers}
-                        passedType={quizData[0]?.capital}
-                        setScore={setScore}
-                        score={score}
-                        setQuizData={setQuizData}
-                        quizData={quizData}
-                        setAnswered={setAnswered}
-                        answered={answered}
-                    />
-                }
+                <Quiz
+                    name={quizData[0]?.name.common}
+                    type1="capital"
+                    answers={answers}
+                    passedType={quizData[0]?.capital}
+                    setScore={setScore}
+                    score={score}
+                    setQuizData={setQuizData}
+                    quizData={quizData}
+                    setAnswered={setAnswered}
+                    answered={answered}
+                    completed={completed}
+                />
                
             </main>
         </div>

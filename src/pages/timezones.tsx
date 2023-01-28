@@ -40,14 +40,12 @@ const Timezones = () => {
             <main className="flex flex-col items-center py-4 gap-4">
                 {completed && <FinishedModal score={score} answered={answered} />}
 
-                {!completed &&
-                    <QuizHeader
-                        category="timezone"
-                        score={score}
-                        answered={answered}
-                        setCompleted={setCompleted}
-                    />
-                }
+                <QuizHeader
+                    category="timezone"
+                    score={score}
+                    answered={answered}
+                    setCompleted={setCompleted}
+                />
 
                 {quizLen > 0 &&
                     <Quiz
@@ -61,6 +59,7 @@ const Timezones = () => {
                         quizData={quizData}
                         setAnswered={setAnswered}
                         answered={answered}
+                        completed={completed}
                     />
                 }
                

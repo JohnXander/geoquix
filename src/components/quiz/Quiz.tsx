@@ -14,6 +14,7 @@ interface Props {
     quizData: any[]
     setAnswered: Dispatch<SetStateAction<number>>
     answered: number
+    completed: boolean
 }
 
 const Quiz: React.FC<Props> = ({
@@ -26,11 +27,14 @@ const Quiz: React.FC<Props> = ({
     setQuizData,
     quizData,
     setAnswered,
-    answered
+    answered,
+    completed
 }) => {
 
     return (
-        <div className="flex flex-col items-center justify-center border-y-2 w-full py-6 px-8">
+        <div
+            style={completed ? {pointerEvents: "none"} : {pointerEvents: "auto"}}
+            className="flex flex-col items-center justify-center border-y-2 w-full py-6 px-8">
                 <h1 className="text-3xl">{name}</h1>
                 <div className="m-2"></div>
                 <div className="flex flex-col md:flex-row gap-2">
