@@ -3,6 +3,7 @@ import Image from "next/image"
 import { useEffect, useState } from "react"
 import { Header } from "../components/header/Header"
 import QuizHeader from "../components/header/QuizHeader"
+import FinishedModal from "../components/modals/FinishedModal"
 import generateFalseAnswers from "../utils/functions/generateFalseAnswers"
 import generateQuizData from "../utils/functions/generateQuizData"
 import getAllAnswers from "../utils/functions/getAllAnswers"
@@ -13,6 +14,7 @@ const Flags = () => {
     const [flags, setFlags] = useState<string[]>([])
     const [score, setScore] = useState<number>(0)
     const [answered, setAnswered] = useState<number>(0)
+    const [completed, setCompleted] = useState<boolean>(false)
 
     useEffect(() => {
         fetch("https://restcountries.com/v3.1/all")
@@ -37,11 +39,16 @@ const Flags = () => {
             <Header />
 
             <main className="flex flex-col items-center py-4 gap-4">
-                <QuizHeader
-                    category="flag"
-                    score={score}
-                    answered={answered}
-                />
+                {completed && <FinishedModal score={score} answered={answered} />}
+
+                {!completed &&
+                    <QuizHeader
+                        category="flag"
+                        score={score}
+                        answered={answered}
+                        setCompleted={setCompleted}
+                    />
+                }
 
                 {quizLen > 0 &&
                     <div className="flex flex-col items-center justify-center border-y-2 w-full py-6 px-8">

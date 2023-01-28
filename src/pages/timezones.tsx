@@ -2,6 +2,7 @@ import Head from "next/head"
 import { useEffect, useState } from "react"
 import { Header } from "../components/header/Header"
 import QuizHeader from "../components/header/QuizHeader"
+import FinishedModal from "../components/modals/FinishedModal"
 import Quiz from "../components/quiz/Quiz"
 import generateFalseAnswers from "../utils/functions/generateFalseAnswers"
 import generateQuizData from "../utils/functions/generateQuizData"
@@ -12,6 +13,7 @@ const Timezones = () => {
     const [timezones, setTimezones] = useState<string[]>([])
     const [score, setScore] = useState<number>(0)
     const [answered, setAnswered] = useState<number>(0)
+    const [completed, setCompleted] = useState<boolean>(false)
 
     useEffect(() => {
         fetch("https://restcountries.com/v3.1/all")
@@ -36,11 +38,16 @@ const Timezones = () => {
             <Header />
             
             <main className="flex flex-col items-center py-4 gap-4">
-                <QuizHeader
-                    category="timezone"
-                    score={score}
-                    answered={answered}
-                />
+                {completed && <FinishedModal score={score} answered={answered} />}
+
+                {!completed &&
+                    <QuizHeader
+                        category="timezone"
+                        score={score}
+                        answered={answered}
+                        setCompleted={setCompleted}
+                    />
+                }
 
                 {quizLen > 0 &&
                     <Quiz
