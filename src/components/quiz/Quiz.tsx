@@ -1,6 +1,6 @@
-import Image from "next/image"
 import { Dispatch, SetStateAction } from "react"
 import formatNumbers from "../../utils/functions/formatNumbers"
+import formatTimezone from "../../utils/functions/formatTimezone"
 import submitAnswer from "../../utils/functions/submitAnswer"
 
 interface Props {
@@ -35,8 +35,10 @@ const Quiz: React.FC<Props> = ({
 
                         if (type1 === "area" || type1 === "population") {
                             displayAnswer = formatNumbers(a)
+                        } else if (type1 === "timezones") {
+                            displayAnswer = formatTimezone(a)
                         }
-                        
+
                         return (
                             <h2
                                 key={answerIdx}
