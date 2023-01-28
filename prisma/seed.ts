@@ -4,10 +4,10 @@ async function main() {
 
     await prisma.quiz.createMany({
         data: [
-          { name: 'City' },
-          { name: 'Flag' }, 
-          { name: 'Currency'  },
-          { name: 'Language' },
+          { name: 'Capitals' },
+          { name: 'Flags' }, 
+          { name: 'Timezones'  },
+          { name: 'Area' },
           { name: 'Population' },
         ],
       })

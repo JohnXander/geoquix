@@ -17,13 +17,13 @@ const generateQuizData = (
             if (item?.[type1]?.[type2]) {
                 countries.push(item)
             } else {
-                countries.push(data[100])
+                countries.push(data[0])
             }
         } else {
             if (item?.[type1]) {
                 countries.push(item)
             } else {
-                countries.push(data[100])
+                countries.push(data[0])
             }
         }
 
