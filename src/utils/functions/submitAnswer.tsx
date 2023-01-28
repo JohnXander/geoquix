@@ -8,7 +8,9 @@ const submitAnswer = (
     setScore: Dispatch<SetStateAction<number>>,
     score: number,
     setQuizData: Dispatch<SetStateAction<any[]>>,
-    quizData: any[]
+    quizData: any[],
+    setAnswered: Dispatch<SetStateAction<number>>,
+    answered: number
 ) => {
 
     if (type2) {
@@ -19,7 +21,9 @@ const submitAnswer = (
     
     if (submittedAnswer === String(correctAnswer)) {
         setScore(score + 1)
-    }
+    } 
+
+    setAnswered(answered + 1)
 }
 
 export default submitAnswer

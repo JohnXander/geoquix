@@ -11,6 +11,7 @@ const Capitals = () => {
     const [quizData, setQuizData] = useState<any[]>([])
     const [capitals, setCapitals] = useState<string[]>([])
     const [score, setScore] = useState<number>(0)
+    const [answered, setAnswered] = useState<number>(0)
 
     useEffect(() => {
         fetch("https://restcountries.com/v3.1/all")
@@ -38,7 +39,7 @@ const Capitals = () => {
                 <QuizHeader
                     category="capital city"
                     score={score}
-                    quizLen={quizLen}
+                    answered={answered}
                 />
 
                 {quizLen > 0 &&
@@ -51,6 +52,8 @@ const Capitals = () => {
                         score={score}
                         setQuizData={setQuizData}
                         quizData={quizData}
+                        setAnswered={setAnswered}
+                        answered={answered}
                     />
                 }
                

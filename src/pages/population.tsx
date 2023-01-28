@@ -11,6 +11,7 @@ const Population = () => {
     const [quizData, setQuizData] = useState<any[]>([])
     const [population, setPopulation] = useState<string[]>([])
     const [score, setScore] = useState<number>(0)
+    const [answered, setAnswered] = useState<number>(0)
 
     useEffect(() => {
         fetch("https://restcountries.com/v3.1/all")
@@ -38,7 +39,7 @@ const Population = () => {
                 <QuizHeader
                     category="population"
                     score={score}
-                    quizLen={quizLen}
+                    answered={answered}
                 />
 
                 {quizLen > 0 &&
@@ -51,6 +52,8 @@ const Population = () => {
                         score={score}
                         setQuizData={setQuizData}
                         quizData={quizData}
+                        setAnswered={setAnswered}
+                        answered={answered}
                     />
                 }
                

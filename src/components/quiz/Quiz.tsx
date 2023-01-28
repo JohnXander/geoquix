@@ -12,6 +12,8 @@ interface Props {
     score: number
     setQuizData: Dispatch<SetStateAction<any[]>>
     quizData: any[]
+    setAnswered: Dispatch<SetStateAction<number>>
+    answered: number
 }
 
 const Quiz: React.FC<Props> = ({
@@ -22,7 +24,9 @@ const Quiz: React.FC<Props> = ({
     setScore,
     score,
     setQuizData,
-    quizData
+    quizData,
+    setAnswered,
+    answered
 }) => {
 
     return (
@@ -52,7 +56,9 @@ const Quiz: React.FC<Props> = ({
                                         setScore,
                                         score,
                                         setQuizData,
-                                        quizData
+                                        quizData,
+                                        setAnswered,
+                                        answered
                                     )
                                 }}>
                                 {displayAnswer}

@@ -11,6 +11,7 @@ const Timezones = () => {
     const [quizData, setQuizData] = useState<any[]>([])
     const [timezones, setTimezones] = useState<string[]>([])
     const [score, setScore] = useState<number>(0)
+    const [answered, setAnswered] = useState<number>(0)
 
     useEffect(() => {
         fetch("https://restcountries.com/v3.1/all")
@@ -38,7 +39,7 @@ const Timezones = () => {
                 <QuizHeader
                     category="timezone"
                     score={score}
-                    quizLen={quizLen}
+                    answered={answered}
                 />
 
                 {quizLen > 0 &&
@@ -51,6 +52,8 @@ const Timezones = () => {
                         score={score}
                         setQuizData={setQuizData}
                         quizData={quizData}
+                        setAnswered={setAnswered}
+                        answered={answered}
                     />
                 }
                

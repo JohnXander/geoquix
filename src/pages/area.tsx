@@ -11,6 +11,7 @@ const Currencies = () => {
     const [quizData, setQuizData] = useState<any[]>([])
     const [areas, setAreas] = useState<string[]>([])
     const [score, setScore] = useState<number>(0)
+    const [answered, setAnswered] = useState<number>(0)
 
     useEffect(() => {
         fetch("https://restcountries.com/v3.1/all")
@@ -38,7 +39,7 @@ const Currencies = () => {
                 <QuizHeader
                     category="land area"
                     score={score}
-                    quizLen={quizLen}
+                    answered={answered}
                 />
 
                 {quizLen > 0 &&
@@ -51,6 +52,8 @@ const Currencies = () => {
                         score={score}
                         setQuizData={setQuizData}
                         quizData={quizData}
+                        setAnswered={setAnswered}
+                        answered={answered}
                     />
                 }
             </main>

@@ -12,6 +12,7 @@ const Flags = () => {
     const [quizData, setQuizData] = useState<any[]>([])
     const [flags, setFlags] = useState<string[]>([])
     const [score, setScore] = useState<number>(0)
+    const [answered, setAnswered] = useState<number>(0)
 
     useEffect(() => {
         fetch("https://restcountries.com/v3.1/all")
@@ -39,7 +40,7 @@ const Flags = () => {
                 <QuizHeader
                     category="flag"
                     score={score}
-                    quizLen={quizLen}
+                    answered={answered}
                 />
 
                 {quizLen > 0 &&
@@ -62,7 +63,9 @@ const Flags = () => {
                                                 setScore,
                                                 score,
                                                 setQuizData,
-                                                quizData
+                                                quizData,
+                                                setAnswered,
+                                                answered
                                             )
                                         }}
                                         alt="Country Flag"

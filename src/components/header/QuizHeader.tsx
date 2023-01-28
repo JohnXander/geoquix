@@ -1,16 +1,22 @@
+import { Timer } from "../timer/Timer"
+
 interface Props {
     category: string
     score: number
-    quizLen: number
+    answered: number
 }
 
-const QuizHeader: React.FC<Props> = ({ category, score, quizLen }) => {
+const QuizHeader: React.FC<Props> = ({ category, score, answered }) => {
     
     return (
-        <div className="flex flex-col gap-4 md:flex-row items-center">
+        <div>
             <h2 className="text-2xl">What is the {category}?</h2>
-            <p className="border-2 py-4 px-8">{score} / 10</p>
-            <p>{quizLen} questions left</p>
+            <div className="m-4"></div>
+            <div className="flex gap-4 items-center">
+                <p className="border-2 py-4 px-8">{answered}</p>
+                <p className="border-2 py-4 px-8">{score}</p>
+                <Timer />
+            </div>
         </div>
     )
 }
