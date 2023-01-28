@@ -1,12 +1,15 @@
-import { Timer } from "../timer/Timer"
+import { Dispatch, SetStateAction, useState } from "react"
+import Timer from "../timer/Timer"
 
 interface Props {
     category: string
     score: number
     answered: number
+    setCompleted: Dispatch<SetStateAction<boolean>>
 }
 
-const QuizHeader: React.FC<Props> = ({ category, score, answered }) => {
+const QuizHeader: React.FC<Props> = ({ category, score, answered, setCompleted }) => {
+    const [count, setCount] = useState(10)
     
     return (
         <div>
@@ -15,7 +18,7 @@ const QuizHeader: React.FC<Props> = ({ category, score, answered }) => {
             <div className="flex gap-4 items-center">
                 <p className="border-2 py-4 px-8">{answered}</p>
                 <p className="border-2 py-4 px-8">{score}</p>
-                <Timer />
+                <Timer count={count} setCount={setCount} setCompleted={setCompleted} />
             </div>
         </div>
     )

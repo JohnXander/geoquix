@@ -8,7 +8,7 @@ const generateQuizData = (
 ) => {
     const countries: Array<any> = []
     
-    for (let i = 0; i < 10; i++){
+    for (let i = 0; i < 100; i++){
         const randomNumber = Math.floor(Math.random() * data.length)
 
         const item = data[randomNumber]
