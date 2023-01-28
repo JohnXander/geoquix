@@ -24,8 +24,6 @@ const Capitals = () => {
     const answers = generateFalseAnswers(quizData[0]?.capital, capitals)
     const quizLen = quizData.length
 
-    console.log(quizData)
-
     return (
         <div>
             <Head>
@@ -46,8 +44,9 @@ const Capitals = () => {
                 {quizLen > 0 &&
                     <Quiz
                         name={quizData[0]?.name.common}
+                        type1="capital"
                         answers={answers}
-                        capital={quizData[0]?.capital}
+                        passedType={quizData[0]?.capital}
                         setScore={setScore}
                         score={score}
                         setQuizData={setQuizData}
