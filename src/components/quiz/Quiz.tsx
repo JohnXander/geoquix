@@ -1,4 +1,6 @@
+import Image from "next/image"
 import { Dispatch, SetStateAction } from "react"
+import formatNumbers from "../../utils/functions/formatNumbers"
 import submitAnswer from "../../utils/functions/submitAnswer"
 
 interface Props {
@@ -29,6 +31,12 @@ const Quiz: React.FC<Props> = ({
                 <div className="m-2"></div>
                 <div className="flex flex-col md:flex-row gap-2">
                     {answers.map((a: string, answerIdx: number) => {
+                        let displayAnswer = a
+
+                        if (type1 === "area" || type1 === "population") {
+                            displayAnswer = formatNumbers(a)
+                        }
+                        
                         return (
                             <h2
                                 key={answerIdx}
@@ -45,7 +53,7 @@ const Quiz: React.FC<Props> = ({
                                         quizData
                                     )
                                 }}>
-                                {a}
+                                {displayAnswer}
                             </h2>
                         )
                     })}

@@ -2,6 +2,7 @@ import Head from "next/head"
 import { useEffect, useState } from "react"
 import { Header } from "../components/header/Header"
 import QuizHeader from "../components/header/QuizHeader"
+import Quiz from "../components/quiz/Quiz"
 import formatNumbers from "../utils/functions/formatNumbers"
 import generateFalseAnswers from "../utils/functions/generateFalseAnswers"
 import generateQuizData from "../utils/functions/generateQuizData"
@@ -43,35 +44,17 @@ const Population = () => {
                 />
 
                 {quizLen > 0 &&
-                    <div className="flex flex-col items-center justify-center border-y-2 w-full py-6 px-8">
-                        <h1 className="text-3xl">{quizData[0]?.name.common}</h1>
-                        <div className="m-2"></div>
-                        <div className="flex flex-col md:flex-row gap-2">
-                            {answers.map((a: string, answerIdx: number) => {
-                                const displayAnswer = formatNumbers(a)
-
-                                return (
-                                    <h2
-                                        key={answerIdx}
-                                        onClick={() => {
-                                            submitAnswer(
-                                                a,
-                                                "population",
-                                                "",
-                                                quizData[0]?.population,
-                                                setScore,
-                                                score,
-                                                setQuizData,
-                                                quizData
-                                            )
-                                        }}
-                                        className="border-2 py-2 px-4 text-center cursor-pointer hover:bg-gray-200">
-                                        {displayAnswer}
-                                    </h2>
-                                )
-                            })}
-                        </div>
-                    </div>}
+                    <Quiz
+                        name={quizData[0]?.name.common}
+                        type1="population"
+                        answers={answers}
+                        passedType={quizData[0]?.population}
+                        setScore={setScore}
+                        score={score}
+                        setQuizData={setQuizData}
+                        quizData={quizData}
+                    />
+                }
                
             </main>
         </div>
