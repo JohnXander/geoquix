@@ -38,7 +38,7 @@ const Flags = () => {
 
             <Header />
 
-            <main className="flex flex-col items-center py-4 gap-4 relative">
+            <main className="flex flex-col items-center py-4 gap-4">
                 {completed && <FinishedModal score={score} answered={answered} />}
 
                 <QuizHeader
