@@ -37,17 +37,15 @@ const Currencies = () => {
 
             <Header />
             
-            <main className="flex flex-col items-center py-4 gap-4">
+            <main className="flex flex-col items-center py-4 gap-4 relative">
                 {completed && <FinishedModal score={score} answered={answered} />}
 
-                {!completed &&
-                    <QuizHeader
-                        category="land area"
-                        score={score}
-                        answered={answered}
-                        setCompleted={setCompleted}
-                    />
-                }
+                <QuizHeader
+                    category="land area"
+                    score={score}
+                    answered={answered}
+                    setCompleted={setCompleted}
+                />
 
                 {quizLen > 0 &&
                     <Quiz

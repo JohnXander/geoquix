@@ -37,17 +37,15 @@ const Capitals = () => {
 
             <Header />
             
-            <main className="flex flex-col items-center py-4 gap-4">
+            <main className="flex flex-col items-center py-4 gap-4 relative">
                 {completed && <FinishedModal score={score} answered={answered} />}
 
-                {!completed &&
-                    <QuizHeader
-                        category="capital city"
-                        score={score}
-                        answered={answered}
-                        setCompleted={setCompleted}
-                    />
-                }
+                <QuizHeader
+                    category="capital city"
+                    score={score}
+                    answered={answered}
+                    setCompleted={setCompleted}
+                />
 
                 <Quiz
                     name={quizData[0]?.name.common}
