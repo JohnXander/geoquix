@@ -1,7 +1,7 @@
 import Head from "next/head"
 import Image from "next/image"
 import { useEffect, useState } from "react"
-import { Header } from "../components/header/Header"
+import {Header} from "../components/header/Header"
 import QuizHeader from "../components/header/QuizHeader"
 import FinishedModal from "../components/modals/FinishedModal"
 import generateFalseAnswers from "../utils/functions/generateFalseAnswers"
@@ -38,7 +38,7 @@ const Flags = () => {
 
             <Header />
 
-            <main className="flex flex-col items-center py-4 gap-4">
+            <main className="flex flex-col items-center py-4 gap-4 relative">
                 {completed && <FinishedModal score={score} answered={answered} />}
 
                 <QuizHeader
