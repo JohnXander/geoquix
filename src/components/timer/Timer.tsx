@@ -1,4 +1,6 @@
+import Image from "next/image"
 import { Dispatch, SetStateAction } from "react"
+import Clock from "../../../assets/quiz-icons/clock.png"
 
 interface Props {
     count: number,
@@ -17,7 +19,15 @@ const QuizHeader: React.FC<Props> = ({ count, setCount, setCompleted }) => {
     }
 
     return (
-        <p className="border-2 py-4 px-8">{count}</p>
+        <div className="flex justify-center gap-2 w-12">
+            <Image
+                src={Clock}
+                alt="Clock"
+                width={25}
+                height={25}
+            />
+            <p className="w-6">{count}</p>
+        </div>
     )
 }
 
