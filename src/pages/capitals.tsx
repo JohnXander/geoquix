@@ -47,19 +47,21 @@ const Capitals = () => {
                     setCompleted={setCompleted}
                 />
 
-                <Quiz
-                    name={quizData[0]?.name.common}
-                    type1="capital"
-                    answers={answers}
-                    passedType={quizData[0]?.capital}
-                    setScore={setScore}
-                    score={score}
-                    setQuizData={setQuizData}
-                    quizData={quizData}
-                    setAnswered={setAnswered}
-                    answered={answered}
-                    completed={completed}
-                />
+                {quizLen > 0 &&
+                    <Quiz
+                        name={quizData[0]?.name.common}
+                        type1="capital"
+                        answers={answers}
+                        passedType={quizData[0]?.capital}
+                        setScore={setScore}
+                        score={score}
+                        setQuizData={setQuizData}
+                        quizData={quizData}
+                        setAnswered={setAnswered}
+                        answered={answered}
+                        completed={completed}
+                    />
+                }
                
             </main>
         </div>
