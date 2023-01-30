@@ -57,7 +57,8 @@ const Flags = () => {
                                 return (
                                     <Image
                                         key={answerIdx}
-                                        className="bg-inherit object-contain border-2 border-gray-700 rounded p-2 cursor-pointer bg-gray-100 hover:bg-gray-700"
+                                        className={`bg-inherit object-contain border-2 border-gray-700 rounded p-2 cursor-pointer 
+                                        bg-gray-100 hover:bg-gray-700`}
                                         src={a}
                                         onClick={() => {
                                             submitAnswer(

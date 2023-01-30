@@ -5,7 +5,7 @@ export const Footer = () => {
             <p>
                 © GeoQuix (2023) by&nbsp;
                 <a
-                    className="text-inherit cursor-pointer hover:text-cyan-500 underline"
+                    className="text-inherit cursor-pointer underline decoration-gray-400 hover:text-cyan-500 hover:decoration-cyan-500"
                     href="https://github.com/JohnXander">
                     John Bloxam
                 </a>
