@@ -14,15 +14,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header />
-
       <main>
         <Categories />
       </main>
-
-      <footer className='absolute bottom-0'>
-        <Footer />
-      </footer>
+     
     </div>
   )
 }

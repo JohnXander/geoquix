@@ -35,8 +35,6 @@ const Capitals = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <Header />
-            
             <main className="flex flex-col items-center py-4 gap-4 relative">
                 {completed && <FinishedModal score={score} answered={answered} />}
 
