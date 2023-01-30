@@ -3,7 +3,7 @@ import Logo from "../../../assets/logo.png"
 
 export const Header = () => {
     return (
-        <div className="p-4 md:px-12 lg:px-32 border-b-2 border-grey-500">
+        <div className="p-4 md:px-12 lg:px-32 border-b-2 border-gray-700">
             <div className="flex items-center gap-2 w-fit">
                 <Image
                     src={Logo}
