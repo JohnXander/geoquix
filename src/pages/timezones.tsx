@@ -1,6 +1,5 @@
 import Head from "next/head"
 import { useEffect, useState } from "react"
-import {Header} from "../components/header/Header"
 import QuizHeader from "../components/header/QuizHeader"
 import FinishedModal from "../components/modals/FinishedModal"
 import Quiz from "../components/quiz/Quiz"

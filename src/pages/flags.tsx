@@ -1,9 +1,9 @@
 import Head from "next/head"
 import Image from "next/image"
 import { useEffect, useState } from "react"
-import {Header} from "../components/header/Header"
 import QuizHeader from "../components/header/QuizHeader"
 import FinishedModal from "../components/modals/FinishedModal"
+import QuizStarter from "../components/quiz/QuizStarter"
 import generateFalseAnswers from "../utils/functions/generateFalseAnswers"
 import generateQuizData from "../utils/functions/generateQuizData"
 import getAllAnswers from "../utils/functions/getAllAnswers"
@@ -15,6 +15,7 @@ const Flags = () => {
     const [score, setScore] = useState<number>(0)
     const [answered, setAnswered] = useState<number>(0)
     const [completed, setCompleted] = useState<boolean>(false)
+    const [quizStart, setQuizStart] = useState<boolean>(false)
 
     useEffect(() => {
         fetch("https://restcountries.com/v3.1/all")
@@ -37,51 +38,57 @@ const Flags = () => {
             </Head>
 
             <main className="flex flex-col items-center py-4 gap-4 relative">
-                {completed && <FinishedModal score={score} answered={answered} />}
+                {!quizStart && <QuizStarter setQuizStart={setQuizStart} />}
 
-                <QuizHeader
-                    category="flag"
-                    score={score}
-                    answered={answered}
-                    setCompleted={setCompleted}
-                />
+                {quizStart && <div className="flex flex-col items-center py-4 gap-4 relative">
 
-                {quizLen > 0 &&
-                    <div
-                        style={completed ? {pointerEvents: "none"} : {pointerEvents: "auto"}}
-                        className="flex flex-col items-center justify-center w-fit py-6 px-8 border-2 border-gray-700 rounded">
-                        <h1 className="text-3xl">{quizData[0]?.name.common}</h1>
-                        <div className="m-2"></div>
-                        <div className="flex flex-col md:flex-row gap-2">
-                            {answers.map((a: string, answerIdx: number) => {
-                                return (
-                                    <Image
-                                        key={answerIdx}
-                                        className={`bg-inherit object-contain border-2 border-gray-700 rounded p-2 cursor-pointer 
-                                        bg-gray-100 hover:bg-gray-700`}
-                                        src={a}
-                                        onClick={() => {
-                                            submitAnswer(
-                                                a,
-                                                "flags",
-                                                "png",
-                                                quizData[0]?.flags.png,
-                                                setScore,
-                                                score,
-                                                setQuizData,
-                                                quizData,
-                                                setAnswered,
-                                                answered
-                                            )
-                                        }}
-                                        alt="Country Flag"
-                                        width={100}
-                                        height={50}
-                                    />
-                                )
-                            })}
-                        </div>
-                    </div>}
+                    {completed && <FinishedModal score={score} answered={answered} />}
+
+                    <QuizHeader
+                        category="flag"
+                        score={score}
+                        answered={answered}
+                        setCompleted={setCompleted}
+                    />
+
+                    {quizLen > 0 &&
+                        <div
+                            style={completed ? {pointerEvents: "none"} : {pointerEvents: "auto"}}
+                            className="flex flex-col items-center justify-center w-fit py-6 px-8 border-2 border-gray-700 rounded">
+                            <h1 className="text-3xl">{quizData[0]?.name.common}</h1>
+                            <div className="m-2"></div>
+                            <div className="flex flex-col md:flex-row gap-2">
+                                {answers.map((a: string, answerIdx: number) => {
+                                    return (
+                                        <Image
+                                            key={answerIdx}
+                                            className={`bg-inherit object-contain border-2 border-gray-700 rounded p-2 cursor-pointer 
+                                            bg-gray-100 hover:bg-gray-700`}
+                                            src={a}
+                                            onClick={() => {
+                                                submitAnswer(
+                                                    a,
+                                                    "flags",
+                                                    "png",
+                                                    quizData[0]?.flags.png,
+                                                    setScore,
+                                                    score,
+                                                    setQuizData,
+                                                    quizData,
+                                                    setAnswered,
+                                                    answered
+                                                )
+                                            }}
+                                            alt="Country Flag"
+                                            width={100}
+                                            height={50}
+                                        />
+                                    )
+                                })}
+                            </div>
+                        </div>}
+                    </div>
+                }
                
             </main>
         </div>
