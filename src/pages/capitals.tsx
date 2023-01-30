@@ -27,6 +27,7 @@ const Capitals = () => {
 
     const answers = generateFalseAnswers(quizData[0]?.capital, capitals)
     const quizLen = quizData.length
+    const category = "capital city"
 
     return (
         <div>
@@ -38,13 +39,13 @@ const Capitals = () => {
 
 
             <main className="flex flex-col items-center py-4">
-                {!quizStart && <QuizStarter setQuizStart={setQuizStart} />}
+                {!quizStart && <QuizStarter setQuizStart={setQuizStart} category={category} />}
 
                 {quizStart && <div className="flex flex-col items-center py-4 gap-4 relative">
                     {completed && <FinishedModal score={score} answered={answered} />}
 
                     <QuizHeader
-                        category="capital city"
+                        category={category}
                         score={score}
                         answered={answered}
                         setCompleted={setCompleted}

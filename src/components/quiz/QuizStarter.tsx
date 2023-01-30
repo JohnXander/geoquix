@@ -2,12 +2,13 @@ import { Dispatch, SetStateAction } from "react"
 
 interface Props {
     setQuizStart: Dispatch<SetStateAction<boolean>>
+    category: string
 }
 
-const QuizStarter: React.FC<Props> = ({ setQuizStart }) => {
+const QuizStarter: React.FC<Props> = ({ setQuizStart, category }) => {
     return (
         <div className="flex flex-col gap-4 items-center border-2 border-gray-700 rounded p-8">
-            <p>You will have 100 seconds to answer as many questions as possible.</p>
+            <p>You will have 100 seconds to answer as many {category} questions as possible.</p>
             <button
                 className="border-2 border-gray-700 rounded p-4 hover:bg-gray-700"
                 onClick={() => setQuizStart(true)}>

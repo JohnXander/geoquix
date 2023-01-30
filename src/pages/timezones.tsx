@@ -27,6 +27,7 @@ const Timezones = () => {
 
     const answers = generateFalseAnswers(quizData[0]?.timezones, timezones)
     const quizLen = quizData.length
+    const category = "timezone"
 
     return (
         <div>
@@ -37,13 +38,13 @@ const Timezones = () => {
             </Head>
 
             <main className="flex flex-col items-center py-4 gap-4 relative">
-                {!quizStart && <QuizStarter setQuizStart={setQuizStart} />}
+                {!quizStart && <QuizStarter setQuizStart={setQuizStart} category={category} />}
 
                 {quizStart && <div className="flex flex-col items-center py-4 gap-4 relative">
                     {completed && <FinishedModal score={score} answered={answered} />}
 
                     <QuizHeader
-                        category="timezone"
+                        category={category}
                         score={score}
                         answered={answered}
                         setCompleted={setCompleted}

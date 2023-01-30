@@ -27,6 +27,7 @@ const Population = () => {
 
     const answers = generateFalseAnswers(quizData[0]?.population, population)
     const quizLen = quizData.length
+    const category = "population"
 
     return (
         <div>
@@ -37,14 +38,14 @@ const Population = () => {
             </Head>
 
             <main className="flex flex-col items-center py-4 gap-4 relative">
-                {!quizStart && <QuizStarter setQuizStart={setQuizStart} />}
+                {!quizStart && <QuizStarter setQuizStart={setQuizStart} category={category} />}
 
                 {quizStart && <div className="flex flex-col items-center py-4 gap-4 relative">
 
                     {completed && <FinishedModal score={score} answered={answered} />}
 
                     <QuizHeader
-                        category="population"
+                        category={category}
                         score={score}
                         answered={answered}
                         setCompleted={setCompleted}

@@ -27,6 +27,7 @@ const Currencies = () => {
 
     const answers = generateFalseAnswers(quizData[0]?.area, areas)
     const quizLen = quizData.length
+    const category = "land area"
 
     return (
         <div>
@@ -37,14 +38,14 @@ const Currencies = () => {
             </Head>
 
             <main className="flex flex-col items-center py-4 gap-4 relative">
-                {!quizStart && <QuizStarter setQuizStart={setQuizStart} />}
+                {!quizStart && <QuizStarter setQuizStart={setQuizStart} category={category} />}
 
                 {quizStart && <div className="flex flex-col items-center py-4 gap-4 relative">
                     
                     {completed && <FinishedModal score={score} answered={answered} />}
 
                     <QuizHeader
-                        category="land area"
+                        category={category}
                         score={score}
                         answered={answered}
                         setCompleted={setCompleted}
