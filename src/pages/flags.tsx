@@ -49,7 +49,7 @@ const Flags = () => {
                 {quizLen > 0 &&
                     <div
                         style={completed ? {pointerEvents: "none"} : {pointerEvents: "auto"}}
-                        className="flex flex-col items-center justify-center border-y-2 w-full py-6 px-8">
+                        className="flex flex-col items-center justify-center w-fit py-6 px-8 border-2 border-gray-700">
                         <h1 className="text-3xl">{quizData[0]?.name.common}</h1>
                         <div className="m-2"></div>
                         <div className="flex flex-col md:flex-row gap-2">

@@ -18,7 +18,7 @@ const QuizHeader: React.FC<Props> = ({ category, score, answered, setCompleted }
         <div>
             <h2 className="text-2xl text-center">What is the {category}?</h2>
             <div className="m-4"></div>
-            <div className="flex gap-12 items-center">
+            <div className="w-screen flex gap-12 items-center justify-center pb-2">
                 <div className="flex justify-center gap-2 w-12">
                     <Image
                         src={Question}

@@ -34,7 +34,7 @@ const Quiz: React.FC<Props> = ({
     return (
         <div
             style={completed ? {pointerEvents: "none"} : {pointerEvents: "auto"}}
-            className="flex flex-col items-center justify-center border-y-2 w-full py-6 px-8">
+            className="flex flex-col items-center justify-center w-80 md:w-fit py-6 px-8 border-2 border-gray-700">
                 <h1 className="text-3xl">{name}</h1>
                 <div className="m-2"></div>
                 <div className="flex flex-col md:flex-row gap-2">
