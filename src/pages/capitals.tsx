@@ -4,6 +4,7 @@ import {Header} from "../components/header/Header"
 import QuizHeader from "../components/header/QuizHeader"
 import FinishedModal from "../components/modals/FinishedModal"
 import Quiz from "../components/quiz/Quiz"
+import QuizStarter from "../components/quiz/QuizStarter"
 import generateFalseAnswers from "../utils/functions/generateFalseAnswers"
 import generateQuizData from "../utils/functions/generateQuizData"
 import getAllAnswers from "../utils/functions/getAllAnswers"
@@ -14,6 +15,7 @@ const Capitals = () => {
     const [score, setScore] = useState<number>(0)
     const [answered, setAnswered] = useState<number>(0)
     const [completed, setCompleted] = useState<boolean>(false)
+    const [quizStart, setQuizStart] = useState<boolean>(false)
 
     useEffect(() => {
         fetch("https://restcountries.com/v3.1/all")
@@ -35,33 +37,40 @@ const Capitals = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <main className="flex flex-col items-center py-4 gap-4 relative">
-                {completed && <FinishedModal score={score} answered={answered} />}
 
-                <QuizHeader
-                    category="capital city"
-                    score={score}
-                    answered={answered}
-                    setCompleted={setCompleted}
-                />
+            <main className="flex flex-col items-center py-4">
+                {!quizStart && <QuizStarter setQuizStart={setQuizStart} />}
 
-                {quizLen > 0 &&
-                    <Quiz
-                        name={quizData[0]?.name.common}
-                        type1="capital"
-                        answers={answers}
-                        passedType={quizData[0]?.capital}
-                        setScore={setScore}
+                {quizStart && <div className="flex flex-col items-center py-4 gap-4 relative">
+                    {completed && <FinishedModal score={score} answered={answered} />}
+
+                    <QuizHeader
+                        category="capital city"
                         score={score}
-                        setQuizData={setQuizData}
-                        quizData={quizData}
-                        setAnswered={setAnswered}
                         answered={answered}
-                        completed={completed}
+                        setCompleted={setCompleted}
                     />
+
+                    {quizLen > 0 &&
+                        <Quiz
+                            name={quizData[0]?.name.common}
+                            type1="capital"
+                            answers={answers}
+                            passedType={quizData[0]?.capital}
+                            setScore={setScore}
+                            score={score}
+                            setQuizData={setQuizData}
+                            quizData={quizData}
+                            setAnswered={setAnswered}
+                            answered={answered}
+                            completed={completed}
+                        />
+                    }
+                </div>
                 }
-               
+                
             </main>
+
         </div>
     )
 }
