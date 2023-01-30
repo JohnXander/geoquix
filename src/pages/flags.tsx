@@ -49,7 +49,7 @@ const Flags = () => {
                 {quizLen > 0 &&
                     <div
                         style={completed ? {pointerEvents: "none"} : {pointerEvents: "auto"}}
-                        className="flex flex-col items-center justify-center w-fit py-6 px-8 border-2 border-gray-700">
+                        className="flex flex-col items-center justify-center w-fit py-6 px-8 border-2 border-gray-700 rounded">
                         <h1 className="text-3xl">{quizData[0]?.name.common}</h1>
                         <div className="m-2"></div>
                         <div className="flex flex-col md:flex-row gap-2">
@@ -57,7 +57,7 @@ const Flags = () => {
                                 return (
                                     <Image
                                         key={answerIdx}
-                                        className="object-contain border-2 p-2 cursor-pointer bg-gray-100 hover:bg-gray-200"
+                                        className="bg-inherit object-contain border-2 border-gray-700 rounded p-2 cursor-pointer bg-gray-100 hover:bg-gray-700"
                                         src={a}
                                         onClick={() => {
                                             submitAnswer(

@@ -34,7 +34,7 @@ const Quiz: React.FC<Props> = ({
     return (
         <div
             style={completed ? {pointerEvents: "none"} : {pointerEvents: "auto"}}
-            className="flex flex-col items-center justify-center w-80 md:w-fit py-6 px-8 border-2 border-gray-700">
+            className="flex flex-col items-center justify-center w-80 md:w-fit py-6 px-8 border-2 border-gray-700 rounded">
                 <h1 className="text-3xl">{name}</h1>
                 <div className="m-2"></div>
                 <div className="flex flex-col md:flex-row gap-2">
@@ -50,7 +50,7 @@ const Quiz: React.FC<Props> = ({
                         return (
                             <h2
                                 key={answerIdx}
-                                className="border-2 py-2 px-4 text-center cursor-pointer hover:bg-gray-200"
+                                className="border-2 border-gray-700 rounded py-2 px-4 text-center cursor-pointer hover:bg-gray-700"
                                 onClick={() => {
                                     submitAnswer(
                                         a,
