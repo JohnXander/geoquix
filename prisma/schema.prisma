@@ -18,9 +18,10 @@ model Quiz {
 }
 
 model Score {
-  id    String @id @default(cuid())
-  name  String
-  score Int
+  id       String @id @default(cuid())
+  name     String
+  score    Int
+  accuracy Int
 
   Quiz   Quiz?   @relation(fields: [quizId], references: [id])
   quizId String?

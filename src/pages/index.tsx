@@ -1,10 +1,14 @@
 import Head from 'next/head'
 import { Categories } from '../components/categories/Categories'
-import { Footer } from '../components/footer/Footer'
-import { Header } from '../components/header/Header'
+import { trpc } from '../utils/trpc';
 
 export default function Home() {
-  
+  const userMutation = trpc.createScore.useMutation();
+
+  const createNewScore = () => {
+    userMutation.mutate({ name: "John", score: 500, accuracy: 50, quizId: "cldkdtifj00007kjw2dh7xpyl" });
+    console.log('it ran')
+  }
 
   return (
     <div>
@@ -15,6 +19,7 @@ export default function Home() {
       </Head>
 
       <main>
+        <button onClick={() => createNewScore()}>Click here</button>
         <Categories />
       </main>
      
