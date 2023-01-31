@@ -8,16 +8,17 @@ interface Props {
     setFormOpen: Dispatch<SetStateAction<boolean>>
     score: number
     accuracy: number
+    type: string
 }
 
-const SaveScoreForm: React.FC<Props> = ({ setFormOpen, score, accuracy }) => {
+const SaveScoreForm: React.FC<Props> = ({ setFormOpen, score, accuracy, type }) => {
     const [name, setName] = useState<string>("")
     const router = useRouter()
 
     const scoreCreater = trpc.createScore.useMutation();
 
     const createNewScore = () => {
-        scoreCreater.mutate({ name, score, accuracy, quiz: "capitals" });
+        scoreCreater.mutate({ name, score, accuracy, quiz: type });
         router.push("/")
     }
 

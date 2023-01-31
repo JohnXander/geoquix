@@ -1,7 +1,5 @@
 import { Dispatch, SetStateAction } from "react"
 import formatAnswers from "../../utils/functions/formatAnswers"
-import formatNumbers from "../../utils/functions/formatNumbers"
-import formatTimezone from "../../utils/functions/formatTimezone"
 import submitAnswer from "../../utils/functions/submitAnswer"
 
 interface Props {

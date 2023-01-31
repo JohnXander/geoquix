@@ -42,7 +42,13 @@ const Population = () => {
 
                 {quizStart && <div className="flex flex-col items-center py-4 gap-4 relative">
 
-                    {completed && <FinishedModal score={score} answered={answered} />}
+                    {completed &&
+                        <FinishedModal
+                            score={score}
+                            answered={answered}
+                            type="population"
+                        />
+                    }
 
                     <QuizHeader
                         category={category}

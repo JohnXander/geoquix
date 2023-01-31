@@ -41,7 +41,13 @@ const Timezones = () => {
                 {!quizStart && <QuizStarter setQuizStart={setQuizStart} category={category} />}
 
                 {quizStart && <div className="flex flex-col items-center py-4 gap-4 relative">
-                    {completed && <FinishedModal score={score} answered={answered} />}
+                    {completed &&
+                        <FinishedModal
+                            score={score}
+                            answered={answered}
+                            type="timezones"
+                        />
+                    }
 
                     <QuizHeader
                         category={category}

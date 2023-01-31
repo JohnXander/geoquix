@@ -4,9 +4,10 @@ import SaveScoreForm from "../forms/SaveScoreForm"
 interface Props {
     score: number
     answered: number
+    type: string
 }
 
-const FinishedModal: React.FC<Props> = ({ score, answered }) => {
+const FinishedModal: React.FC<Props> = ({ score, answered, type }) => {
     const [formOpen, setFormOpen] = useState<boolean>(false)
 
     const percentage = Math.floor((100 * score) / answered)
@@ -25,12 +26,13 @@ const FinishedModal: React.FC<Props> = ({ score, answered }) => {
                     Save Score
                 </button>
             }
-            
+
             {formOpen &&
                 <SaveScoreForm
                     setFormOpen={setFormOpen}
                     score={score}
                     accuracy={percentage}
+                    type={type}
                 />
             }
         </div>
