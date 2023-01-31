@@ -11,7 +11,7 @@ export const appRouter = router({
   // }),
 
   createScore: procedure
-    .input(z.object({ name: z.string(), score: z.number(), accuracy: z.number(), quizId: z.string() }),)
+    .input(z.object({ name: z.string(), score: z.number(), accuracy: z.number(), quiz: z.string() }),)
     .mutation(async ({ input }) => {
       const createdScore = await prisma.score.create({ data: { ...input } })
       return {newScore: createdScore}

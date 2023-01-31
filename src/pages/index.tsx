@@ -6,7 +6,7 @@ export default function Home() {
   const userMutation = trpc.createScore.useMutation();
 
   const createNewScore = () => {
-    userMutation.mutate({ name: "John", score: 500, accuracy: 50, quizId: "cldkdtifj00007kjw2dh7xpyl" });
+    userMutation.mutate({ name: "John", score: 500, accuracy: 50, quiz: "cldkdtifj00007kjw2dh7xpyl" });
     console.log('it ran')
   }
 

@@ -11,18 +11,10 @@ datasource db {
   shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
-model Quiz {
-  id    String  @id @default(cuid())
-  name  String
-  score Score[]
-}
-
 model Score {
   id       String @id @default(cuid())
   name     String
   score    Int
   accuracy Int
-
-  Quiz   Quiz?   @relation(fields: [quizId], references: [id])
-  quizId String?
+  quiz     String
 }
