@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from "react"
+import formatAnswers from "../../utils/functions/formatAnswers"
 import formatNumbers from "../../utils/functions/formatNumbers"
 import formatTimezone from "../../utils/functions/formatTimezone"
 import submitAnswer from "../../utils/functions/submitAnswer"
@@ -39,19 +40,7 @@ const Quiz: React.FC<Props> = ({
                 <div className="m-2"></div>
                 <div className="flex flex-col md:flex-row gap-2">
                     {answers.map((a: string, answerIdx: number) => {
-                        let displayAnswer = a
-
-                        switch (type1) {
-                            case "area":
-                                displayAnswer = formatNumbers(a) + " ㎢"
-                                break
-                            case "population":
-                                displayAnswer = formatNumbers(a)
-                                break
-                            case "timezones":
-                                displayAnswer = formatTimezone(a)
-                                break
-                        }
+                        const displayAnswer = formatAnswers(type1, a)
 
                         return (
                             <h2
