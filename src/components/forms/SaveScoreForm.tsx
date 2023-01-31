@@ -1,18 +1,24 @@
 import Image from "next/image"
-import { Dispatch, SetStateAction } from "react"
+import { useRouter } from "next/router"
+import { Dispatch, SetStateAction, useState } from "react"
 import Close from "../../../assets/quiz-icons/close.png"
 import { trpc } from "../../utils/trpc"
 
 interface Props {
     setFormOpen: Dispatch<SetStateAction<boolean>>
+    score: number
+    accuracy: number
 }
 
-const SaveScoreForm: React.FC<Props> = ({ setFormOpen }) => {
+const SaveScoreForm: React.FC<Props> = ({ setFormOpen, score, accuracy }) => {
+    const [name, setName] = useState<string>("")
+    const router = useRouter()
+
     const scoreCreater = trpc.createScore.useMutation();
 
     const createNewScore = () => {
-        scoreCreater.mutate({ name: "TEst", score: 1, accuracy: 1, quiz: "capitals" });
-        console.log('it ran')
+        scoreCreater.mutate({ name, score, accuracy, quiz: "capitals" });
+        router.push("/")
     }
 
     return (
@@ -31,6 +37,8 @@ const SaveScoreForm: React.FC<Props> = ({ setFormOpen }) => {
             <input
                 className="bg-inherit border-2 border-gray-700 rounded py-2 px-4"
                 type="text"
+                placeholder="E.g. John"
+                onChange={(e) => setName(e.target.value)}
             />
             <button
                 className="border-2 border-gray-700 rounded py-2 px-4 hover:bg-gray-700"
