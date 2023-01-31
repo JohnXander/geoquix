@@ -1,8 +1,21 @@
 import Head from "next/head"
+import { useState } from "react"
 import { trpc } from "../utils/trpc"
 
 const Leaderboard = () => {
     const allScores = trpc.getAllScores.useQuery().data
+
+    if (allScores === undefined) {
+        return <div>Loading...</div>
+    }
+
+    const capitals = allScores.filter(entry => entry.quiz === "capitals")
+    const flags = allScores.filter(entry => entry.quiz === "flags")
+    const timezones = allScores.filter(entry => entry.quiz === "timezones")
+    const area = allScores.filter(entry => entry.quiz === "area")
+    const population = allScores.filter(entry => entry.quiz === "population")
+
+    console.log('first', capitals)
 
     return (
         <div>
@@ -13,21 +26,20 @@ const Leaderboard = () => {
             </Head>
 
             <main className="flex flex-col items-center py-4 gap-4 relative">
-                {
-                    allScores === undefined ? <p>Loading...</p> :
-                        allScores.map((entry: any) => {
-                            const {id, name, score, accuracy, quiz} = entry
-                            return (
-                                <div
-                                    className="flex gap-4"
-                                    key={id}>
-                                    <p>{name}</p>
-                                    <p>{score}</p>
-                                    <p>{accuracy}</p>
-                                    <p>{quiz}</p>
-                                </div>
-                            )
-                        })
+                {allScores.map((entry: any) => {
+                    const { id, name, score, accuracy, quiz } = entry
+                        
+                    return (
+                        <div
+                            className="flex gap-4"
+                            key={id}>
+                            <p>{name}</p>
+                            <p>{score}</p>
+                            <p>{accuracy}</p>
+                            <p>{quiz}</p>
+                        </div>
+                    )
+                })
                 }
             </main>
 
