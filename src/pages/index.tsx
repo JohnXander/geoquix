@@ -19,7 +19,6 @@ export default function Home() {
       </Head>
 
       <main>
-        <button onClick={() => createNewScore()}>Click here</button>
         <Categories />
       </main>
      
