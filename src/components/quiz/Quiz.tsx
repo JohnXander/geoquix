@@ -41,10 +41,16 @@ const Quiz: React.FC<Props> = ({
                     {answers.map((a: string, answerIdx: number) => {
                         let displayAnswer = a
 
-                        if (type1 === "area" || type1 === "population") {
-                            displayAnswer = formatNumbers(a)
-                        } else if (type1 === "timezones") {
-                            displayAnswer = formatTimezone(a)
+                        switch (type1) {
+                            case "area":
+                                displayAnswer = formatNumbers(a) + " ㎢"
+                                break
+                            case "population":
+                                displayAnswer = formatNumbers(a)
+                                break
+                            case "timezones":
+                                displayAnswer = formatTimezone(a)
+                                break
                         }
 
                         return (
