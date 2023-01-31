@@ -9,12 +9,6 @@ const Leaderboard = () => {
         return <div>Loading...</div>
     }
 
-    const capitals = allScores.filter(entry => entry.quiz === "capitals")
-    const flags = allScores.filter(entry => entry.quiz === "flags")
-    const timezones = allScores.filter(entry => entry.quiz === "timezones")
-    const area = allScores.filter(entry => entry.quiz === "area")
-    const population = allScores.filter(entry => entry.quiz === "population")
-
     const tableItem = "w-16 md:w-40"
     const tableHeading = `font-bold ${tableItem}`
 
