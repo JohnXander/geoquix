@@ -15,7 +15,8 @@ const Leaderboard = () => {
     const area = allScores.filter(entry => entry.quiz === "area")
     const population = allScores.filter(entry => entry.quiz === "population")
 
-    console.log('first', capitals)
+    const tableItem = "w-16 md:w-40"
+    const tableHeading = `font-bold ${tableItem}`
 
     return (
         <div className="flex justify-center">
@@ -27,15 +28,16 @@ const Leaderboard = () => {
 
             <main className="flex flex-col items-center py-4 gap-4 relative">
                 <div className="border-b-2 border-gray-700 flex gap-4">
-                    <p className="w-16">Name</p>
-                    <p className="w-16">Score</p>
-                    <p className="w-16">Acc.</p>
-                    <p className="w-16">Quiz</p>
+                    <p className={tableHeading}>Name</p>
+                    <p className={tableHeading}>Score</p>
+                    <p className={tableHeading}>Acc.</p>
+                    <p className={tableHeading}>Quiz</p>
                 </div>
 
                 {allScores.map((entry: any) => {
                     const { id, name, score, accuracy, quiz } = entry
 
+                    const displayName = name.substring(0, 5).toUpperCase()
                     let displayQuiz = quiz.substring(0, 3).toUpperCase()
                     
                     if (quiz === "area" || quiz === "flags" || quiz === "timezones") {
@@ -46,10 +48,10 @@ const Leaderboard = () => {
                         <div
                             className="flex gap-4"
                             key={id}>
-                            <p className="w-16">{name}</p>
-                            <p className="w-16">{score}</p>
-                            <p className="w-16">{accuracy}</p>
-                            <p className="w-16">{displayQuiz}</p>
+                            <p className={tableItem}>{displayName}</p>
+                            <p className={tableItem}>{score}</p>
+                            <p className={tableItem}>{accuracy}</p>
+                            <p className={tableItem}>{displayQuiz}</p>
                         </div>
                     )
                 })
