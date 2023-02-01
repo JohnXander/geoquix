@@ -3,6 +3,7 @@ import Link from "next/link"
 import allCategories from "../../data/data"
 
 export const Categories = () => {
+
     const category = `w-full md:w-3/4 py-4 px-6 border-2 border-gray-700 flex items-center justify-between
     cursor-pointer hover:bg-gray-700`
 

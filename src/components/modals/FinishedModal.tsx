@@ -1,5 +1,8 @@
+import Image from "next/image"
 import { useState } from "react"
 import SaveScoreForm from "../forms/SaveScoreForm"
+import Correct from "../../../assets/quiz-icons/correct.png"
+import { useRouter } from "next/router"
 
 interface Props {
     score: number
@@ -9,6 +12,8 @@ interface Props {
 
 const FinishedModal: React.FC<Props> = ({ score, answered, type }) => {
     const [formOpen, setFormOpen] = useState<boolean>(false)
+    const [scoreSubmitted, setScoreSubmitted] = useState<boolean>(false)
+    const router = useRouter()
 
     const percentage = Math.floor((100 * score) / answered)
 
@@ -19,7 +24,26 @@ const FinishedModal: React.FC<Props> = ({ score, answered, type }) => {
             <p className="text-2xl">Score: {score}</p>
             <p className="text-2xl">Accuracy: {percentage}%</p>
 
-            {!formOpen &&
+            {scoreSubmitted && 
+                <div className="flex flex-col gap-2 items-center">
+                    <div className="flex items-center gap-2">
+                        <p className="text-green-400">Score Submitted</p>
+                        <Image
+                            src={Correct}
+                            alt={"Correct Icon"}
+                            width={20}
+                            height={20}
+                        />
+                    </div>
+                    <button
+                        className="border-2 border-gray-700 rounded py-2 px-4 hover:bg-gray-700"
+                        onClick={() => router.push("/leaderboard")}>
+                        Leaderboard
+                    </button>
+                </div>
+            }
+
+            {!formOpen && !scoreSubmitted &&
                 <button
                     className="border-2 border-gray-700 rounded py-2 px-4 hover:bg-gray-700"
                     onClick={() => setFormOpen(true)}>
@@ -33,6 +57,7 @@ const FinishedModal: React.FC<Props> = ({ score, answered, type }) => {
                     score={score}
                     accuracy={percentage}
                     type={type}
+                    setScoreSubmitted={setScoreSubmitted}
                 />
             }
         </div>

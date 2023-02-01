@@ -34,7 +34,6 @@ const Leaderboard = () => {
                 {allScores.map((entry: any) => {
                     const { id, name, score, accuracy, quiz } = entry
 
-                    const displayName = name.substring(0, 5).toUpperCase()
                     let displayQuiz = quiz.substring(0, 3).toUpperCase()
                     
                     if (quiz === "area" || quiz === "flags" || quiz === "timezones") {
@@ -45,7 +44,7 @@ const Leaderboard = () => {
                         <div
                             className="flex gap-4"
                             key={id}>
-                            <p className={tableItem}>{displayName}</p>
+                            <p className={tableItem}>{name}</p>
                             <p className={tableItem}>{score}</p>
                             <p className={tableItem}>{accuracy}</p>
                             <p className={tableItem}>{displayQuiz}</p>
