@@ -4,7 +4,8 @@ import { trpc } from "../utils/trpc"
 
 const Leaderboard = () => {
     const allScores = trpc.getAllScores.useQuery().data
-    const [category, setCategory] = useState<string>("timezones")
+    const [category, setCategory] = useState<string>("all")
+    const [stats, setStats] = useState<string>("none")
 
     if (allScores === undefined) {
         return (
@@ -24,6 +25,12 @@ const Leaderboard = () => {
         displayLeaderboard = allScores.filter((entry: any) => entry.quiz === category)
     }
 
+    if (stats !== "none") {
+        displayLeaderboard = displayLeaderboard.sort((a: any, b:any) => a[stats] - b[stats]).reverse()
+    }
+
+    console.log(displayLeaderboard)
+
     return (
         <div className="flex justify-center">
             <Head>
@@ -33,37 +40,20 @@ const Leaderboard = () => {
             </Head>
 
             <main className="flex flex-col items-center py-4 gap-4 relative">
+                <h2>Sort By</h2>
                 <ul className="flex">
-                    <li 
-                        onClick={() => setCategory("all")}
-                        className={filterItem}>
-                        ALL
-                    </li>
-                    <li
-                        onClick={() => setCategory("capitals")}
-                        className={filterItem}>
-                        CAP
-                    </li>
-                    <li
-                        onClick={() => setCategory("flags")}
-                        className={filterItem}>
-                        FLA
-                    </li>
-                    <li
-                        onClick={() => setCategory("timezones")}
-                        className={filterItem}>
-                        TIM
-                    </li>
-                    <li
-                        onClick={() => setCategory("area")}
-                        className={filterItem}>
-                        ARE
-                    </li>
-                    <li
-                        onClick={() => setCategory("population")}
-                        className={filterItem}>
-                        POP
-                    </li>
+                    <li onClick={() => setCategory("all")} className={filterItem}>ALL</li>
+                    <li onClick={() => setCategory("capitals")} className={filterItem}>CAP</li>
+                    <li onClick={() => setCategory("flags")} className={filterItem}>FLA</li>
+                    <li onClick={() => setCategory("timezones")} className={filterItem}>TIM</li>
+                    <li onClick={() => setCategory("area")} className={filterItem}>ARE</li>
+                    <li onClick={() => setCategory("population")} className={filterItem}>POP</li>
+                </ul>
+
+                <ul className="flex">
+                    <li onClick={() => setStats("none")} className={filterItem}>NONE</li>
+                    <li onClick={() => setStats("score")} className={filterItem}>SCORE</li>
+                    <li onClick={() => setStats("accuracy")} className={filterItem}>ACC.</li>
                 </ul>
 
                 <div className="border-b-2 border-gray-700 flex gap-4 pb-2">

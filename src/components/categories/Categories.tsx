@@ -5,7 +5,7 @@ import allCategories from "../../data/data"
 export const Categories = () => {
 
     const category = `w-full md:w-3/4 py-4 px-6 border-2 border-gray-700 flex items-center justify-between
-    cursor-pointer hover:bg-gray-700`
+    cursor-pointer hover:bg-gray-700 rounded`
 
     return (
         <div className="flex flex-col items-center gap-3 py-6 md:px-12 lg:px-32">
