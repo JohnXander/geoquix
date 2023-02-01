@@ -7,7 +7,6 @@ import Flags from "../../assets/category-icons/flags.png"
 import Timezones from "../../assets/category-icons/timezones.png"
 import Area from "../../assets/category-icons/area.png"
 import Population from "../../assets/category-icons/population.png"
-import All from "../../assets/quiz-icons/all.png"
 import None from "../../assets/quiz-icons/none.png"
 import Score from "../../assets/quiz-icons/score.png"
 import Accuracy from "../../assets/quiz-icons/accuracy.png"
@@ -48,111 +47,113 @@ const Leaderboard = () => {
             </Head>
 
             <main className="flex flex-col items-center py-4 gap-4 relative">
-                <h2>Sort By</h2>
-                <ul className="flex">
-                    <li
-                        onClick={() => setCategory("all")}
-                        className={filterItem}
-                        style={category === "all" ? {backgroundColor: "#374151"} : {backgroundColor: "inherit"}}>
-                        <Image
-                            src={All}
-                            alt="All Icon"
-                            width={30}
-                            height={30}
-                        />
-                    </li>
-                    <li
-                        onClick={() => setCategory("capitals")}
-                        className={filterItem}
-                        style={category === "capitals" ? {backgroundColor: "#374151"} : {backgroundColor: "inherit"}}>
-                        <Image
-                            src={Capitals}
-                            alt="Capitals Icon"
-                            width={30}
-                            height={30}
-                        />
-                    </li>
-                    <li
-                        onClick={() => setCategory("flags")}
-                        className={filterItem}
-                        style={category === "flags" ? {backgroundColor: "#374151"} : {backgroundColor: "inherit"}}>
-                        <Image
-                            src={Flags}
-                            alt="Flags Icon"
-                            width={30}
-                            height={30}
-                        />
-                    </li>
-                    <li
-                        onClick={() => setCategory("timezones")}
-                        className={filterItem}
-                        style={category === "timezones" ? {backgroundColor: "#374151"} : {backgroundColor: "inherit"}}>
-                        <Image
-                            src={Timezones}
-                            alt="Timezones Icon"
-                            width={30}
-                            height={30}
-                        />
-                    </li>
-                    <li
-                        onClick={() => setCategory("area")}
-                        className={filterItem}
-                        style={category === "area" ? {backgroundColor: "#374151"} : {backgroundColor: "inherit"}}>
-                        <Image
-                            src={Area}
-                            alt="Area Icon"
-                            width={30}
-                            height={30}
-                        />
-                    </li>
-                    <li
-                        onClick={() => setCategory("population")}
-                        className={`${filterItem} border-r-2`}
-                        style={category === "population" ? {backgroundColor: "#374151"} : {backgroundColor: "inherit"}}>
-                        <Image
-                            src={Population}
-                            alt="Population Icon"
-                            width={30}
-                            height={30}
-                        />
-                    </li>
-                </ul>
+                <div className="flex flex-col md:flex-row gap-x-8 items-center">
+                    <h2 className="font-bold">Sort By:</h2>
+                    <ul className="flex">
+                        <li
+                            onClick={() => setCategory("all")}
+                            className={filterItem}
+                            style={category === "all" ? {backgroundColor: "#374151"} : {backgroundColor: "inherit"}}>
+                            <Image
+                                src={None}
+                                alt="None Icon"
+                                width={30}
+                                height={30}
+                            />
+                        </li>
+                        <li
+                            onClick={() => setCategory("capitals")}
+                            className={filterItem}
+                            style={category === "capitals" ? {backgroundColor: "#374151"} : {backgroundColor: "inherit"}}>
+                            <Image
+                                src={Capitals}
+                                alt="Capitals Icon"
+                                width={30}
+                                height={30}
+                            />
+                        </li>
+                        <li
+                            onClick={() => setCategory("flags")}
+                            className={filterItem}
+                            style={category === "flags" ? {backgroundColor: "#374151"} : {backgroundColor: "inherit"}}>
+                            <Image
+                                src={Flags}
+                                alt="Flags Icon"
+                                width={30}
+                                height={30}
+                            />
+                        </li>
+                        <li
+                            onClick={() => setCategory("timezones")}
+                            className={filterItem}
+                            style={category === "timezones" ? {backgroundColor: "#374151"} : {backgroundColor: "inherit"}}>
+                            <Image
+                                src={Timezones}
+                                alt="Timezones Icon"
+                                width={30}
+                                height={30}
+                            />
+                        </li>
+                        <li
+                            onClick={() => setCategory("area")}
+                            className={filterItem}
+                            style={category === "area" ? {backgroundColor: "#374151"} : {backgroundColor: "inherit"}}>
+                            <Image
+                                src={Area}
+                                alt="Area Icon"
+                                width={30}
+                                height={30}
+                            />
+                        </li>
+                        <li
+                            onClick={() => setCategory("population")}
+                            className={`${filterItem} border-r-2`}
+                            style={category === "population" ? {backgroundColor: "#374151"} : {backgroundColor: "inherit"}}>
+                            <Image
+                                src={Population}
+                                alt="Population Icon"
+                                width={30}
+                                height={30}
+                            />
+                        </li>
+                    </ul>
 
-                <ul className="flex">
-                    <li
-                        onClick={() => setStats("none")}
-                        className={filterItem}
-                        style={stats === "none" ? {backgroundColor: "#374151"} : {backgroundColor: "inherit"}}>
-                        <Image
-                            src={None}
-                            alt="None Icon"
-                            width={30}
-                            height={30}
-                        />
-                    </li>
-                    <li
-                        onClick={() => setStats("score")}
-                        className={filterItem}
-                        style={stats === "score" ? {backgroundColor: "#374151"} : {backgroundColor: "inherit"}}>
-                        <Image
-                            src={Score}
-                            alt="Score Icon"
-                            width={30}
-                            height={30}
-                        />
-                    </li>
-                    <li
-                        onClick={() => setStats("accuracy")}
-                        className={`${filterItem} border-r-2`}
-                        style={stats === "accuracy" ? {backgroundColor: "#374151"} : {backgroundColor: "inherit"}}>
-                        <Image
-                            src={Accuracy}
-                            alt="Accuracy Icon"
-                            width={30}
-                            height={30}
-                        />
-                    </li>
-                </ul>
+                    <ul className="flex">
+                        <li
+                            onClick={() => setStats("none")}
+                            className={filterItem}
+                            style={stats === "none" ? {backgroundColor: "#374151"} : {backgroundColor: "inherit"}}>
+                            <Image
+                                src={None}
+                                alt="None Icon"
+                                width={30}
+                                height={30}
+                            />
+                        </li>
+                        <li
+                            onClick={() => setStats("score")}
+                            className={filterItem}
+                            style={stats === "score" ? {backgroundColor: "#374151"} : {backgroundColor: "inherit"}}>
+                            <Image
+                                src={Score}
+                                alt="Score Icon"
+                                width={30}
+                                height={30}
+                            />
+                        </li>
+                        <li
+                            onClick={() => setStats("accuracy")}
+                            className={`${filterItem} border-r-2`}
+                            style={stats === "accuracy" ? {backgroundColor: "#374151"} : {backgroundColor: "inherit"}}>
+                            <Image
+                                src={Accuracy}
+                                alt="Accuracy Icon"
+                                width={30}
+                                height={30}
+                            />
+                        </li>
+                    </ul>
+                </div>
 
                 <div className="border-b-2 border-gray-700 flex gap-4 pb-2">
                     <p className={tableHeading}>Name</p>
