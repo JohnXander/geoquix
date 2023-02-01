@@ -24,7 +24,7 @@ const Leaderboard = () => {
 
     const tableItem = "w-16 md:w-40"
     const tableHeading = `font-bold ${tableItem}`
-    const filterItem = "flex items-center border-2 border-gray-700 p-2 cursor-pointer hover:bg-gray-700"
+    const filterItem = "flex items-center border-y-2 border-l-2 border-gray-700 p-2 cursor-pointer hover:bg-gray-700"
     
     let displayLeaderboard = allScores
 
@@ -47,7 +47,10 @@ const Leaderboard = () => {
             <main className="flex flex-col items-center py-4 gap-4 relative">
                 <h2>Sort By</h2>
                 <ul className="flex">
-                    <li onClick={() => setCategory("all")} className={filterItem}>
+                    <li
+                        onClick={() => setCategory("all")}
+                        className={filterItem}
+                        style={category === "all" ? {backgroundColor: "#374151"} : {backgroundColor: "inherit"}}>
                         <Image
                             src={All}
                             alt="All Icon"
@@ -55,7 +58,10 @@ const Leaderboard = () => {
                             height={30}
                         />
                     </li>
-                    <li onClick={() => setCategory("capitals")} className={filterItem}>
+                    <li
+                        onClick={() => setCategory("capitals")}
+                        className={filterItem}
+                        style={category === "capitals" ? {backgroundColor: "#374151"} : {backgroundColor: "inherit"}}>
                         <Image
                             src={Capitals}
                             alt="Capitals Icon"
@@ -63,7 +69,10 @@ const Leaderboard = () => {
                             height={30}
                         />
                     </li>
-                    <li onClick={() => setCategory("flags")} className={filterItem}>
+                    <li
+                        onClick={() => setCategory("flags")}
+                        className={filterItem}
+                        style={category === "flags" ? {backgroundColor: "#374151"} : {backgroundColor: "inherit"}}>
                         <Image
                             src={Flags}
                             alt="Flags Icon"
@@ -71,7 +80,10 @@ const Leaderboard = () => {
                             height={30}
                         />
                     </li>
-                    <li onClick={() => setCategory("timezones")} className={filterItem}>
+                    <li
+                        onClick={() => setCategory("timezones")}
+                        className={filterItem}
+                        style={category === "timezones" ? {backgroundColor: "#374151"} : {backgroundColor: "inherit"}}>
                         <Image
                             src={Timezones}
                             alt="Timezones Icon"
@@ -79,7 +91,10 @@ const Leaderboard = () => {
                             height={30}
                         />
                     </li>
-                    <li onClick={() => setCategory("area")} className={filterItem}>
+                    <li
+                        onClick={() => setCategory("area")}
+                        className={filterItem}
+                        style={category === "area" ? {backgroundColor: "#374151"} : {backgroundColor: "inherit"}}>
                         <Image
                             src={Area}
                             alt="Area Icon"
@@ -87,7 +102,10 @@ const Leaderboard = () => {
                             height={30}
                         />
                     </li>
-                    <li onClick={() => setCategory("population")} className={filterItem}>
+                    <li
+                        onClick={() => setCategory("population")}
+                        className={`${filterItem} border-r-2`}
+                        style={category === "population" ? {backgroundColor: "#374151"} : {backgroundColor: "inherit"}}>
                         <Image
                             src={Population}
                             alt="Population Icon"
@@ -100,7 +118,7 @@ const Leaderboard = () => {
                 <ul className="flex">
                     <li onClick={() => setStats("none")} className={filterItem}>NONE</li>
                     <li onClick={() => setStats("score")} className={filterItem}>SCORE</li>
-                    <li onClick={() => setStats("accuracy")} className={filterItem}>ACC.</li>
+                    <li onClick={() => setStats("accuracy")} className={`${filterItem} border-r-2`}>ACC.</li>
                 </ul>
 
                 <div className="border-b-2 border-gray-700 flex gap-4 pb-2">
