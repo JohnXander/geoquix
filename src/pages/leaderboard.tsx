@@ -44,7 +44,7 @@ const Leaderboard = () => {
                         <div
                             className="flex gap-4"
                             key={id}>
-                            <p className={tableItem}>{name}</p>
+                            <p className={tableItem}>{name.toUpperCase()}</p>
                             <p className={tableItem}>{score}</p>
                             <p className={tableItem}>{accuracy}</p>
                             <p className={tableItem}>{displayQuiz}</p>

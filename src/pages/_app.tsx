@@ -11,7 +11,7 @@ const poppins = Poppins({
 
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
-    <main className={`bg-gray-800 text-white h-screen relative ${poppins.className}`}>
+    <main className={`bg-gray-800 text-white min-h-screen ${poppins.className}`}>
       <Header />
       <Component {...pageProps} />
     </main>
