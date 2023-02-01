@@ -1,6 +1,13 @@
 import Head from "next/head"
+import Image from "next/image"
 import { useState } from "react"
 import { trpc } from "../utils/trpc"
+import Capitals from "../../assets/category-icons/capitals.png"
+import Flags from "../../assets/category-icons/flags.png"
+import Timezones from "../../assets/category-icons/timezones.png"
+import Area from "../../assets/category-icons/area.png"
+import Population from "../../assets/category-icons/population.png"
+import All from "../../assets/quiz-icons/all.png"
 
 const Leaderboard = () => {
     const allScores = trpc.getAllScores.useQuery().data
@@ -17,7 +24,7 @@ const Leaderboard = () => {
 
     const tableItem = "w-16 md:w-40"
     const tableHeading = `font-bold ${tableItem}`
-    const filterItem = "border-2 border-gray-700 p-2 cursor-pointer hover:bg-gray-700"
+    const filterItem = "flex items-center border-2 border-gray-700 p-2 cursor-pointer hover:bg-gray-700"
     
     let displayLeaderboard = allScores
 
@@ -28,8 +35,6 @@ const Leaderboard = () => {
     if (stats !== "none") {
         displayLeaderboard = displayLeaderboard.sort((a: any, b:any) => a[stats] - b[stats]).reverse()
     }
-
-    console.log(displayLeaderboard)
 
     return (
         <div className="flex justify-center">
@@ -42,12 +47,54 @@ const Leaderboard = () => {
             <main className="flex flex-col items-center py-4 gap-4 relative">
                 <h2>Sort By</h2>
                 <ul className="flex">
-                    <li onClick={() => setCategory("all")} className={filterItem}>ALL</li>
-                    <li onClick={() => setCategory("capitals")} className={filterItem}>CAP</li>
-                    <li onClick={() => setCategory("flags")} className={filterItem}>FLA</li>
-                    <li onClick={() => setCategory("timezones")} className={filterItem}>TIM</li>
-                    <li onClick={() => setCategory("area")} className={filterItem}>ARE</li>
-                    <li onClick={() => setCategory("population")} className={filterItem}>POP</li>
+                    <li onClick={() => setCategory("all")} className={filterItem}>
+                        <Image
+                            src={All}
+                            alt="All Icon"
+                            width={30}
+                            height={30}
+                        />
+                    </li>
+                    <li onClick={() => setCategory("capitals")} className={filterItem}>
+                        <Image
+                            src={Capitals}
+                            alt="Capitals Icon"
+                            width={30}
+                            height={30}
+                        />
+                    </li>
+                    <li onClick={() => setCategory("flags")} className={filterItem}>
+                        <Image
+                            src={Flags}
+                            alt="Flags Icon"
+                            width={30}
+                            height={30}
+                        />
+                    </li>
+                    <li onClick={() => setCategory("timezones")} className={filterItem}>
+                        <Image
+                            src={Timezones}
+                            alt="Timezones Icon"
+                            width={30}
+                            height={30}
+                        />
+                    </li>
+                    <li onClick={() => setCategory("area")} className={filterItem}>
+                        <Image
+                            src={Area}
+                            alt="Area Icon"
+                            width={30}
+                            height={30}
+                        />
+                    </li>
+                    <li onClick={() => setCategory("population")} className={filterItem}>
+                        <Image
+                            src={Population}
+                            alt="Population Icon"
+                            width={30}
+                            height={30}
+                        />
+                    </li>
                 </ul>
 
                 <ul className="flex">
