@@ -37,32 +37,32 @@ const Leaderboard = () => {
                     <li 
                         onClick={() => setCategory("all")}
                         className={filterItem}>
-                        All
+                        ALL
                     </li>
                     <li
                         onClick={() => setCategory("capitals")}
                         className={filterItem}>
-                        Capitals
+                        CAP
                     </li>
                     <li
                         onClick={() => setCategory("flags")}
                         className={filterItem}>
-                        Flags
+                        FLA
                     </li>
                     <li
                         onClick={() => setCategory("timezones")}
                         className={filterItem}>
-                        Timezones
+                        TIM
                     </li>
                     <li
                         onClick={() => setCategory("area")}
                         className={filterItem}>
-                        Area
+                        ARE
                     </li>
                     <li
                         onClick={() => setCategory("population")}
                         className={filterItem}>
-                        Population
+                        POP
                     </li>
                 </ul>
 
