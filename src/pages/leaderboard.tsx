@@ -1,8 +1,10 @@
 import Head from "next/head"
+import { useState } from "react"
 import { trpc } from "../utils/trpc"
 
 const Leaderboard = () => {
     const allScores = trpc.getAllScores.useQuery().data
+    const [category, setCategory] = useState<string>("timezones")
 
     if (allScores === undefined) {
         return (
@@ -14,6 +16,13 @@ const Leaderboard = () => {
 
     const tableItem = "w-16 md:w-40"
     const tableHeading = `font-bold ${tableItem}`
+    const filterItem = "border-2 border-gray-700 p-2 cursor-pointer hover:bg-gray-700"
+    
+    let displayLeaderboard = allScores
+
+    if (category !== "all") {
+        displayLeaderboard = allScores.filter((entry: any) => entry.quiz === category)
+    }
 
     return (
         <div className="flex justify-center">
@@ -24,6 +33,39 @@ const Leaderboard = () => {
             </Head>
 
             <main className="flex flex-col items-center py-4 gap-4 relative">
+                <ul className="flex">
+                    <li 
+                        onClick={() => setCategory("all")}
+                        className={filterItem}>
+                        All
+                    </li>
+                    <li
+                        onClick={() => setCategory("capitals")}
+                        className={filterItem}>
+                        Capitals
+                    </li>
+                    <li
+                        onClick={() => setCategory("flags")}
+                        className={filterItem}>
+                        Flags
+                    </li>
+                    <li
+                        onClick={() => setCategory("timezones")}
+                        className={filterItem}>
+                        Timezones
+                    </li>
+                    <li
+                        onClick={() => setCategory("area")}
+                        className={filterItem}>
+                        Area
+                    </li>
+                    <li
+                        onClick={() => setCategory("population")}
+                        className={filterItem}>
+                        Population
+                    </li>
+                </ul>
+
                 <div className="border-b-2 border-gray-700 flex gap-4 pb-2">
                     <p className={tableHeading}>Name</p>
                     <p className={tableHeading}>Score</p>
@@ -31,7 +73,7 @@ const Leaderboard = () => {
                     <p className={tableHeading}>Quiz</p>
                 </div>
 
-                {allScores.map((entry: any) => {
+                {displayLeaderboard.map((entry: any) => {
                     const { id, name, score, accuracy, quiz } = entry
 
                     let displayQuiz = quiz.substring(0, 3).toUpperCase()
