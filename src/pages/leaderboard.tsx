@@ -8,6 +8,9 @@ import Timezones from "../../assets/category-icons/timezones.png"
 import Area from "../../assets/category-icons/area.png"
 import Population from "../../assets/category-icons/population.png"
 import All from "../../assets/quiz-icons/all.png"
+import None from "../../assets/quiz-icons/none.png"
+import Score from "../../assets/quiz-icons/score.png"
+import Accuracy from "../../assets/quiz-icons/accuracy.png"
 
 const Leaderboard = () => {
     const allScores = trpc.getAllScores.useQuery().data
@@ -116,9 +119,39 @@ const Leaderboard = () => {
                 </ul>
 
                 <ul className="flex">
-                    <li onClick={() => setStats("none")} className={filterItem}>NONE</li>
-                    <li onClick={() => setStats("score")} className={filterItem}>SCORE</li>
-                    <li onClick={() => setStats("accuracy")} className={`${filterItem} border-r-2`}>ACC.</li>
+                    <li
+                        onClick={() => setStats("none")}
+                        className={filterItem}
+                        style={stats === "none" ? {backgroundColor: "#374151"} : {backgroundColor: "inherit"}}>
+                        <Image
+                            src={None}
+                            alt="None Icon"
+                            width={30}
+                            height={30}
+                        />
+                    </li>
+                    <li
+                        onClick={() => setStats("score")}
+                        className={filterItem}
+                        style={stats === "score" ? {backgroundColor: "#374151"} : {backgroundColor: "inherit"}}>
+                        <Image
+                            src={Score}
+                            alt="Score Icon"
+                            width={30}
+                            height={30}
+                        />
+                    </li>
+                    <li
+                        onClick={() => setStats("accuracy")}
+                        className={`${filterItem} border-r-2`}
+                        style={stats === "accuracy" ? {backgroundColor: "#374151"} : {backgroundColor: "inherit"}}>
+                        <Image
+                            src={Accuracy}
+                            alt="Accuracy Icon"
+                            width={30}
+                            height={30}
+                        />
+                    </li>
                 </ul>
 
                 <div className="border-b-2 border-gray-700 flex gap-4 pb-2">
@@ -143,7 +176,7 @@ const Leaderboard = () => {
                             key={id}>
                             <p className={tableItem}>{name.toUpperCase()}</p>
                             <p className={tableItem}>{score}</p>
-                            <p className={tableItem}>{accuracy}</p>
+                            <p className={tableItem}>{`${accuracy}%`}</p>
                             <p className={tableItem}>{displayQuiz}</p>
                         </div>
                     )
