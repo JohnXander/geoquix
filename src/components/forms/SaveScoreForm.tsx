@@ -19,7 +19,7 @@ const SaveScoreForm: React.FC<Props> = ({ setFormOpen, score, accuracy, type }) 
 
     const createNewScore = () => {
         scoreCreater.mutate({ name, score, accuracy, quiz: type });
-        router.push("/")
+        router.push("/leaderboard")
     }
 
     return (
@@ -38,6 +38,7 @@ const SaveScoreForm: React.FC<Props> = ({ setFormOpen, score, accuracy, type }) 
             <input
                 className="bg-inherit border-2 border-gray-700 rounded py-2 px-4"
                 type="text"
+                maxLength={5}
                 placeholder="E.g. John"
                 onChange={(e) => setName(e.target.value)}
             />

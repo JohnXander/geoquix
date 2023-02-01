@@ -5,7 +5,11 @@ const Leaderboard = () => {
     const allScores = trpc.getAllScores.useQuery().data
 
     if (allScores === undefined) {
-        return <div>Loading...</div>
+        return (
+            <div className="flex justify-center pt-4">
+                Loading...
+            </div>
+        )
     }
 
     const tableItem = "w-16 md:w-40"
@@ -20,7 +24,7 @@ const Leaderboard = () => {
             </Head>
 
             <main className="flex flex-col items-center py-4 gap-4 relative">
-                <div className="border-b-2 border-gray-700 flex gap-4">
+                <div className="border-b-2 border-gray-700 flex gap-4 pb-2">
                     <p className={tableHeading}>Name</p>
                     <p className={tableHeading}>Score</p>
                     <p className={tableHeading}>Acc.</p>
