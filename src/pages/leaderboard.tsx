@@ -11,6 +11,7 @@ import none from "../../assets/quiz-icons/none.png"
 import score from "../../assets/quiz-icons/score.png"
 import accuracy from "../../assets/quiz-icons/accuracy.png"
 import FilterBar from "../components/leaderboard/FilterBar"
+import SortBy from "../components/leaderboard/SortBy"
 
 const Leaderboard = () => {
     const allScores = trpc.getAllScores.useQuery().data
@@ -50,25 +51,15 @@ const Leaderboard = () => {
             </Head>
 
             <main className="flex flex-col items-center py-4 gap-4 relative">
-                <div className="flex flex-col md:flex-row gap-x-8 items-center">
-                    <h2 className="font-bold">Sort By:</h2>
 
-                    <ul className="flex">
-                        <FilterBar
-                            filters={categoryFilters}
-                            filter={category}
-                            setFilter={setCategory}
-                        />
-                    </ul>
-
-                    <ul className="flex">
-                        <FilterBar
-                            filters={statFilters}
-                            filter={stats}
-                            setFilter={setStats}
-                        />
-                    </ul>
-                </div>
+                <SortBy
+                    categoryFilters={categoryFilters}
+                    category={category}
+                    setCategory={setCategory}
+                    statFilters={statFilters}
+                    stats={stats}
+                    setStats={setStats}
+                />
 
                 <div className="border-b-2 border-gray-700 flex gap-4 pb-2">
                     <p className={tableHeading}>Name</p>
