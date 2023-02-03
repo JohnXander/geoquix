@@ -29,6 +29,7 @@ const Leaderboard = () => {
     const filterItem = "flex items-center border-y-2 border-l-2 border-gray-700 p-2 cursor-pointer hover:bg-gray-700"
 
     const categoryFilters = [none, capitals, flags, timezones, area, population]
+    const statFilters = [none, score, accuracy]
     
     let displayLeaderboard = allScores
 
@@ -74,7 +75,26 @@ const Leaderboard = () => {
                     </ul>
 
                     <ul className="flex">
-                        <li
+                        {statFilters.map((cat: any, idx: number) => {
+                                const categoryName = cat.src.substring(20).split(".")[0]
+
+                                return (
+                                    <li
+                                        key={idx}
+                                        onClick={() => setStats(categoryName)}
+                                        className={filterItem}
+                                        style={stats === categoryName ? {backgroundColor: "#374151"} : {backgroundColor: "inherit"}}>
+                                        <Image
+                                            src={cat}
+                                            alt={`${categoryName} icon`}
+                                            width={30}
+                                            height={30}
+                                        />
+                                    </li>
+                                )
+                        })}
+                        
+                        {/* <li
                             onClick={() => setStats("none")}
                             className={filterItem}
                             style={stats === "none" ? {backgroundColor: "#374151"} : {backgroundColor: "inherit"}}>
@@ -106,7 +126,7 @@ const Leaderboard = () => {
                                 width={30}
                                 height={30}
                             />
-                        </li>
+                        </li> */}
                     </ul>
                 </div>
 
