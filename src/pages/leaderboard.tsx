@@ -10,6 +10,7 @@ import population from "../../assets/category-icons/population.png"
 import none from "../../assets/quiz-icons/none.png"
 import score from "../../assets/quiz-icons/score.png"
 import accuracy from "../../assets/quiz-icons/accuracy.png"
+import FilterBar from "../components/leaderboard/FilterBar"
 
 const Leaderboard = () => {
     const allScores = trpc.getAllScores.useQuery().data
@@ -26,7 +27,6 @@ const Leaderboard = () => {
 
     const tableItem = "w-16 md:w-40"
     const tableHeading = `font-bold ${tableItem}`
-    const filterItem = "flex items-center border-y-2 border-l-2 border-gray-700 p-2 cursor-pointer hover:bg-gray-700"
 
     const categoryFilters = [none, capitals, flags, timezones, area, population]
     const statFilters = [none, score, accuracy]
@@ -54,79 +54,19 @@ const Leaderboard = () => {
                     <h2 className="font-bold">Sort By:</h2>
 
                     <ul className="flex">
-                        {categoryFilters.map((cat: any, idx: number) => {
-                            const categoryName = cat.src.substring(20).split(".")[0]
-
-                            return (
-                                <li
-                                    key={idx}
-                                    onClick={() => setCategory(categoryName)}
-                                    className={filterItem}
-                                    style={category === categoryName ? {backgroundColor: "#374151"} : {backgroundColor: "inherit"}}>
-                                    <Image
-                                        src={cat}
-                                        alt={`${categoryName} icon`}
-                                        width={30}
-                                        height={30}
-                                    />
-                                </li>
-                            )
-                        })}
+                        <FilterBar
+                            filters={categoryFilters}
+                            filter={category}
+                            setFilter={setCategory}
+                        />
                     </ul>
 
                     <ul className="flex">
-                        {statFilters.map((cat: any, idx: number) => {
-                                const categoryName = cat.src.substring(20).split(".")[0]
-
-                                return (
-                                    <li
-                                        key={idx}
-                                        onClick={() => setStats(categoryName)}
-                                        className={filterItem}
-                                        style={stats === categoryName ? {backgroundColor: "#374151"} : {backgroundColor: "inherit"}}>
-                                        <Image
-                                            src={cat}
-                                            alt={`${categoryName} icon`}
-                                            width={30}
-                                            height={30}
-                                        />
-                                    </li>
-                                )
-                        })}
-                        
-                        {/* <li
-                            onClick={() => setStats("none")}
-                            className={filterItem}
-                            style={stats === "none" ? {backgroundColor: "#374151"} : {backgroundColor: "inherit"}}>
-                            <Image
-                                src={none}
-                                alt="None Icon"
-                                width={30}
-                                height={30}
-                            />
-                        </li>
-                        <li
-                            onClick={() => setStats("score")}
-                            className={filterItem}
-                            style={stats === "score" ? {backgroundColor: "#374151"} : {backgroundColor: "inherit"}}>
-                            <Image
-                                src={score}
-                                alt="Score Icon"
-                                width={30}
-                                height={30}
-                            />
-                        </li>
-                        <li
-                            onClick={() => setStats("accuracy")}
-                            className={`${filterItem} border-r-2`}
-                            style={stats === "accuracy" ? {backgroundColor: "#374151"} : {backgroundColor: "inherit"}}>
-                            <Image
-                                src={accuracy}
-                                alt="Accuracy Icon"
-                                width={30}
-                                height={30}
-                            />
-                        </li> */}
+                        <FilterBar
+                            filters={statFilters}
+                            filter={stats}
+                            setFilter={setStats}
+                        />
                     </ul>
                 </div>
 
