@@ -5,11 +5,11 @@ async function main() {
 
     await prisma.score.createMany({
         data: [
-          { name: "John", score: 5, accuracy: 50, quiz: "capitals" },
-          { name: "John", score: 4, accuracy: 40, quiz: "flags"  },
-          { name: "John", score: 3, accuracy: 30, quiz: "timezones"  },
-          { name: "John", score: 2, accuracy: 20, quiz: "area"  },
-          { name: "John", score: 1, accuracy: 10, quiz: "population"  },
+          { name: "John", score: 44, accuracy: 80, quiz: "capitals" },
+          { name: "Xandr", score: 50, accuracy: 81, quiz: "flags"  },
+          { name: "Blox", score: 28, accuracy: 65, quiz: "timezones"  },
+          { name: "Xandr", score: 24, accuracy: 58, quiz: "area"  },
+          { name: "John", score: 17, accuracy: 40, quiz: "population"  },
         ],
       })
 
