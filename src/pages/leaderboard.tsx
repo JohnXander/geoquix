@@ -2,18 +2,18 @@ import Head from "next/head"
 import Image from "next/image"
 import { useState } from "react"
 import { trpc } from "../utils/trpc"
-import Capitals from "../../assets/category-icons/capitals.png"
-import Flags from "../../assets/category-icons/flags.png"
-import Timezones from "../../assets/category-icons/timezones.png"
-import Area from "../../assets/category-icons/area.png"
-import Population from "../../assets/category-icons/population.png"
-import None from "../../assets/quiz-icons/none.png"
-import Score from "../../assets/quiz-icons/score.png"
-import Accuracy from "../../assets/quiz-icons/accuracy.png"
+import capitals from "../../assets/category-icons/capitals.png"
+import flags from "../../assets/category-icons/flags.png"
+import timezones from "../../assets/category-icons/timezones.png"
+import area from "../../assets/category-icons/area.png"
+import population from "../../assets/category-icons/population.png"
+import none from "../../assets/quiz-icons/none.png"
+import score from "../../assets/quiz-icons/score.png"
+import accuracy from "../../assets/quiz-icons/accuracy.png"
 
 const Leaderboard = () => {
     const allScores = trpc.getAllScores.useQuery().data
-    const [category, setCategory] = useState<string>("all")
+    const [category, setCategory] = useState<string>("none")
     const [stats, setStats] = useState<string>("none")
 
     if (allScores === undefined) {
@@ -27,10 +27,12 @@ const Leaderboard = () => {
     const tableItem = "w-16 md:w-40"
     const tableHeading = `font-bold ${tableItem}`
     const filterItem = "flex items-center border-y-2 border-l-2 border-gray-700 p-2 cursor-pointer hover:bg-gray-700"
+
+    const categoryFilters = [none, capitals, flags, timezones, area, population]
     
     let displayLeaderboard = allScores
 
-    if (category !== "all") {
+    if (category !== "none") {
         displayLeaderboard = allScores.filter((entry: any) => entry.quiz === category)
     }
 
@@ -49,73 +51,26 @@ const Leaderboard = () => {
             <main className="flex flex-col items-center py-4 gap-4 relative">
                 <div className="flex flex-col md:flex-row gap-x-8 items-center">
                     <h2 className="font-bold">Sort By:</h2>
+
                     <ul className="flex">
-                        <li
-                            onClick={() => setCategory("all")}
-                            className={filterItem}
-                            style={category === "all" ? {backgroundColor: "#374151"} : {backgroundColor: "inherit"}}>
-                            <Image
-                                src={None}
-                                alt="None Icon"
-                                width={30}
-                                height={30}
-                            />
-                        </li>
-                        <li
-                            onClick={() => setCategory("capitals")}
-                            className={filterItem}
-                            style={category === "capitals" ? {backgroundColor: "#374151"} : {backgroundColor: "inherit"}}>
-                            <Image
-                                src={Capitals}
-                                alt="Capitals Icon"
-                                width={30}
-                                height={30}
-                            />
-                        </li>
-                        <li
-                            onClick={() => setCategory("flags")}
-                            className={filterItem}
-                            style={category === "flags" ? {backgroundColor: "#374151"} : {backgroundColor: "inherit"}}>
-                            <Image
-                                src={Flags}
-                                alt="Flags Icon"
-                                width={30}
-                                height={30}
-                            />
-                        </li>
-                        <li
-                            onClick={() => setCategory("timezones")}
-                            className={filterItem}
-                            style={category === "timezones" ? {backgroundColor: "#374151"} : {backgroundColor: "inherit"}}>
-                            <Image
-                                src={Timezones}
-                                alt="Timezones Icon"
-                                width={30}
-                                height={30}
-                            />
-                        </li>
-                        <li
-                            onClick={() => setCategory("area")}
-                            className={filterItem}
-                            style={category === "area" ? {backgroundColor: "#374151"} : {backgroundColor: "inherit"}}>
-                            <Image
-                                src={Area}
-                                alt="Area Icon"
-                                width={30}
-                                height={30}
-                            />
-                        </li>
-                        <li
-                            onClick={() => setCategory("population")}
-                            className={`${filterItem} border-r-2`}
-                            style={category === "population" ? {backgroundColor: "#374151"} : {backgroundColor: "inherit"}}>
-                            <Image
-                                src={Population}
-                                alt="Population Icon"
-                                width={30}
-                                height={30}
-                            />
-                        </li>
+                        {categoryFilters.map((cat: any, idx: number) => {
+                            const categoryName = cat.src.substring(20).split(".")[0]
+
+                            return (
+                                <li
+                                    key={idx}
+                                    onClick={() => setCategory(categoryName)}
+                                    className={filterItem}
+                                    style={category === categoryName ? {backgroundColor: "#374151"} : {backgroundColor: "inherit"}}>
+                                    <Image
+                                        src={cat}
+                                        alt={`${categoryName} icon`}
+                                        width={30}
+                                        height={30}
+                                    />
+                                </li>
+                            )
+                        })}
                     </ul>
 
                     <ul className="flex">
@@ -124,7 +79,7 @@ const Leaderboard = () => {
                             className={filterItem}
                             style={stats === "none" ? {backgroundColor: "#374151"} : {backgroundColor: "inherit"}}>
                             <Image
-                                src={None}
+                                src={none}
                                 alt="None Icon"
                                 width={30}
                                 height={30}
@@ -135,7 +90,7 @@ const Leaderboard = () => {
                             className={filterItem}
                             style={stats === "score" ? {backgroundColor: "#374151"} : {backgroundColor: "inherit"}}>
                             <Image
-                                src={Score}
+                                src={score}
                                 alt="Score Icon"
                                 width={30}
                                 height={30}
@@ -146,7 +101,7 @@ const Leaderboard = () => {
                             className={`${filterItem} border-r-2`}
                             style={stats === "accuracy" ? {backgroundColor: "#374151"} : {backgroundColor: "inherit"}}>
                             <Image
-                                src={Accuracy}
+                                src={accuracy}
                                 alt="Accuracy Icon"
                                 width={30}
                                 height={30}
