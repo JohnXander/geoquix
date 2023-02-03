@@ -12,7 +12,7 @@ interface Props {
 }
 
 const QuizHeader: React.FC<Props> = ({ category, score, answered, setCompleted }) => {
-    const [count, setCount] = useState(10)
+    const [count, setCount] = useState(100)
     
     return (
         <div>
