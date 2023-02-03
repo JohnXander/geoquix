@@ -12,7 +12,7 @@ interface Props {
 
 const SortBy: React.FC<Props> = ({ categoryFilters, category, setCategory, statFilters, stats, setStats }) => {
     return (
-        <div className="flex flex-col md:flex-row gap-x-8 items-center">
+        <div className="flex flex-col md:flex-row gap-x-8 gap-y-4 items-center">
                     <h2 className="font-bold">Sort By:</h2>
 
                     <ul className="flex">

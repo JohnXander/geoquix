@@ -18,7 +18,11 @@ const FilterBar: React.FC<Props> = ({ filters, filter, setFilter }) => {
                     key={idx}
                     onClick={() => setFilter(categoryName)}
                     className={filterItem}
-                    style={filter === categoryName ? {backgroundColor: "#374151"} : {backgroundColor: "inherit"}}>
+                    style={
+                        filter === categoryName ? { backgroundColor: "#374151" } :
+                            idx === filters.length - 1 ? { borderRight: "2px solid #334155" } :
+                                { backgroundColor: "inherit" }
+                    }>
                     <Image
                         src={cat}
                         alt={`${categoryName} icon`}
