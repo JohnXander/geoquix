@@ -18,14 +18,14 @@ const FinishedModal: React.FC<Props> = ({ score, answered, type }) => {
     const percentage = Math.floor((100 * score) / answered)
 
     return (
-        <div className="bg-gray-800 flex flex-col items-center gap-2 border-2 border-gray-700 rounded py-32 px-8 absolute">
-            <h1 className="text-3xl">Time Up!</h1>
+        <div className="bg-gray-800 w-full md:w-fit flex flex-col items-center gap-2 border-2 border-gray-700 rounded p-12 absolute">
+            <h1 className="text-4xl">Time Up!</h1>
             <p className="text-2xl">Questions: {answered}</p>
             <p className="text-2xl">Score: {score}</p>
             <p className="text-2xl">Accuracy: {percentage}%</p>
 
             {scoreSubmitted && 
-                <div className="flex flex-col gap-2 items-center">
+                <div className="flex flex-col gap-4 items-center mt-2">
                     <div className="flex items-center gap-2">
                         <p className="text-green-400">Score Submitted</p>
                         <Image
@@ -45,7 +45,7 @@ const FinishedModal: React.FC<Props> = ({ score, answered, type }) => {
 
             {!formOpen && !scoreSubmitted &&
                 <button
-                    className="border-2 border-gray-700 rounded py-2 px-4 hover:bg-gray-700"
+                    className="border-2 border-green-700 rounded py-2 px-4 hover:bg-green-700 mt-2"
                     onClick={() => setFormOpen(true)}>
                     Save Score
                 </button>

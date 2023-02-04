@@ -23,7 +23,7 @@ const SaveScoreForm: React.FC<Props> = ({ setFormOpen, score, accuracy, type, se
     }
 
     return (
-        <div className="flex flex-col gap-2 border-2 border-gray-700 rounded py-4 px-8">
+        <div className="flex flex-col gap-2 w-full border-2 border-gray-700 rounded py-4 px-8 mt-2">
             <div className="flex justify-end">
                 <Image
                     className="cursor-pointer"
@@ -43,7 +43,7 @@ const SaveScoreForm: React.FC<Props> = ({ setFormOpen, score, accuracy, type, se
                 onChange={(e) => setName(e.target.value)}
             />
             <button
-                className="border-2 border-gray-700 rounded py-2 px-4 hover:bg-gray-700"
+                className="border-2 border-green-700 rounded py-2 px-4 hover:bg-green-700"
                 onClick={createNewScore}>
                 Submit Score
             </button>
